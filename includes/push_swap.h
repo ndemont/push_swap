@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 14:34:04 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/04 12:50:17 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/04 16:28:52 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,13 @@ t_piles 			*init_piles(void);
 void				push_swap(t_piles *piles);
 void				swap_a(t_piles *piles);
 void				swap_b(t_piles *piles);
+void				swap_both(t_piles *piles);
 void				push_a(t_piles *piles);
 void				push_b(t_piles *piles);
+void				rotate_a(t_piles *piles);
+void				rotate_b(t_piles *piles);
+void				rotate_both(t_piles *piles);
+void				reverse_rotate_a(t_piles *piles);
 
 void				print_piles(t_piles *piles);
 

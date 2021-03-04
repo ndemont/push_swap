@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 12:31:36 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/04 13:00:26 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/04 15:57:25 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,33 @@ void	swap_b(t_piles *piles)
 
 void	push_b(t_piles *piles)
 {
-	t_list *tmpa;
-	t_list *tmp2;
+	t_list	*pile_a1;
+	t_list	*pile_a2;
+
+	pile_a1 = *piles->a;
+	pile_a2 = (*piles->a)->next;
+	if (!piles)
+		return ;
+	if (!pile_a1)
+		return ;
+	ft_lstadd_front(piles->b, pile_a1);
+	piles->a = &pile_a2;
+}
+
+void	rotate_b(t_piles *piles)
+{
+	t_list	*pile_first;
+	t_list	*pile_second;
 
 	if (!piles)
 		return ;
-	if (!*(piles->a))
+	pile_first = *piles->b;
+	if (!pile_first)
 		return ;
-	tmpa = *(piles->a);
-	printf("add first elem a = %p\n", *(piles->a));
-	printf("add first elem b = %p\n", *(piles->b));
-	tmp2 = (*(piles->a))->next;
-	printf("add new first elem a = %p\n", *(piles->a));
-	tmpa->next = *(piles->b);
-	printf("add new second elem b = %p\n", tmpa->next);
-	piles->b = &(tmpa);
-	piles->a = &tmp2;
-	printf("add new first elem a = %p\n", *(piles->a));
-	printf("add new first elem b = %p\n", *(piles->b));
+	pile_second = (*piles->b)->next;
+	if (!pile_second)
+		return ;
+	ft_lstadd_back(piles->b, pile_first);
+	pile_first->next = 0;
+	piles->b = &pile_second;
 }

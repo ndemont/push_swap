@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:07:54 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/04 12:19:12 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/04 16:28:50 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		*lst = temp->next;
 		free(temp);
 	}
-	*lst = 0;
 }
 
 void	ft_lstadd_back(t_list **alst, t_list *new)
