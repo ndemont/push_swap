@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/04 11:07:54 by ndemont           #+#    #+#             */
+/*   Updated: 2021/03/04 12:19:12 by ndemont          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int	ft_atoi(const char *str)
+int		ft_atoi(const char *str)
 {
 	int		i;
 	long	nb;
@@ -30,8 +42,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	t_list	*temp;
 
 	if (!lst)
-        return ;
-    if (!del)
+		return ;
+	if (!del)
 		return ;
 	while (*lst)
 	{
@@ -40,7 +52,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		*lst = temp->next;
 		free(temp);
 	}
-    *lst = 0;
+	*lst = 0;
 }
 
 void	ft_lstadd_back(t_list **alst, t_list *new)
@@ -102,7 +114,7 @@ t_list	*ft_lstlast(t_list *lst)
 	return (lst);
 }
 
-int	ft_lstsize(t_list *lst)
+int		ft_lstsize(t_list *lst)
 {
 	int	count;
 
@@ -142,7 +154,7 @@ t_list	*ft_lstdup(t_list *lst, void (*del)(void *))
 	return (begin);
 }
 
-t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*map;
 	t_list	*begin;
@@ -159,4 +171,21 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		map = map->next;
 	}
 	return (begin);
+}
+
+void	ft_putnbr_fd(long n, int fd)
+{
+	int		c;
+	long	nb;
+
+	nb = n;
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		nb = -n;
+	}
+	if ((nb / 10) > 0)
+		ft_putnbr_fd((nb / 10), fd);
+	c = (nb % 10) + 48;
+	write(fd, &c, 1);
 }

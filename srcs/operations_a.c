@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   operations_a.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/03 14:39:58 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/04 11:45:24 by ndemont          ###   ########.fr       */
+/*   Created: 2021/03/04 12:24:39 by ndemont           #+#    #+#             */
+/*   Updated: 2021/03/04 12:35:59 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(t_piles *piles)
-{
-	(void)piles;
-}
+void	swap_a();
+
+void	push_a();
+
+void	rotate_a();
+
+void	reverse_rotate_a();
+

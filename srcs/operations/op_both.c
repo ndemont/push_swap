@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   op_both.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/03 14:39:58 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/04 11:45:24 by ndemont          ###   ########.fr       */
+/*   Created: 2021/03/04 12:27:35 by ndemont           #+#    #+#             */
+/*   Updated: 2021/03/04 12:37:42 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(t_piles *piles)
+void	swap_both(t_piles *piles)
 {
-	(void)piles;
+	swap_a(piles);
+	swap_b(piles);
 }
