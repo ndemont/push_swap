@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 15:02:30 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/04 16:28:58 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/06 19:05:55 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,16 @@ int		check_integer(long nb)
 	return (1);
 }
 
-int		check_duplicate(t_list **begin, long n2)
+int		check_duplicate(t_piles *piles, long n2)
 {
 	t_list	*pile;
 	long	n1;
 
-	if (!begin)
+	if (!piles)
 		return (0);
-	pile = *begin;
+	if (piles->len < 2)
+		return (0);
+	pile = piles->a;
 	while (pile)
 	{
 		n1 = *(long *)pile->content;
@@ -61,13 +63,15 @@ long	*check_errors(char *av, t_piles *piles)
 
 	if (!check_digit(av))
 		print_errors(piles);
+	if (ft_strlen(av) > 11)
+		print_errors(piles);
 	nb = malloc(sizeof(long));
 	if (!nb)
 		print_errors(piles);
 	*nb = ft_atoi(av);
 	if (!check_integer(*nb))
 		print_errors(piles);
-	if (check_duplicate(piles->a, *nb))
+	if (check_duplicate(piles, *nb))
 		print_errors(piles);
 	return (nb);
 }

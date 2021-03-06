@@ -6,11 +6,21 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:07:54 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/04 16:28:50 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/06 19:19:16 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+size_t	ft_strlen(const char *s)
+{
+	size_t len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	return (len);
+}
 
 int		ft_atoi(const char *str)
 {
@@ -47,9 +57,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		return ;
 	while (*lst)
 	{
-		(*del)((*lst)->content);
 		temp = *lst;
-		*lst = temp->next;
+		*lst = (*lst)->next;
+		(*del)(temp->content);
 		free(temp);
 	}
 }
@@ -187,4 +197,16 @@ void	ft_putnbr_fd(long n, int fd)
 		ft_putnbr_fd((nb / 10), fd);
 	c = (nb % 10) + 48;
 	write(fd, &c, 1);
+}
+
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	int	i;
+	int	c;
+
+	i = 0;
+	while ((s1[i] == s2[i]) && (s1[i] != '\0'))
+		i++;
+	c = (unsigned char)(s1[i]) - (unsigned char)(s2[i]);
+	return (c);
 }
