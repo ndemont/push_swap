@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 15:00:17 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/06 19:22:22 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/06 22:37:48 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ void	parsing(int ac, char **av, t_piles *piles)
 			print_errors(piles);
 		}
 		ft_lstadd_back(&piles->a, new);
-		piles->len++;
+		piles->len_total++;
 		i++;
 	}
+	piles->len_a = piles->len_total;
 }

@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 12:31:56 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/06 19:24:30 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/06 22:45:02 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ int		push_a(t_piles *piles)
 	ft_lstdelone(pile_b1, &free);
 	pile_b1 = 0;
 	piles->b = pile_b2;
+	piles->len_a++;
+	piles->len_b--;
 	return (print_piles(piles));
 }
 

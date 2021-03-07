@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 14:34:04 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/06 19:28:07 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/07 12:42:08 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <sys/uio.h>
 # include <stdlib.h>
 # include <stdio.h>
+# define BUFFER_SIZE 1
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 
@@ -31,7 +32,9 @@ typedef struct		s_piles
 {
 	int			v;
 	int			c;
-	int			len;
+	int			len_total;
+	int			len_a;
+	int			len_b;
 	t_list		*a;
 	t_list		*b;
 }					t_piles;
@@ -76,6 +79,8 @@ int					rotate_both(t_piles *piles);
 int					reverse_rotate_a(t_piles *piles, int print);
 int					reverse_rotate_b(t_piles *piles, int print);
 int					reverse_rotate_both(t_piles *piles);
+
+void				heap_sort(t_piles *piles);
 
 int					print_piles(t_piles *piles);
 

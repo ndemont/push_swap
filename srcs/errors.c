@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 15:02:30 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/06 19:05:55 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/06 22:38:11 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		check_duplicate(t_piles *piles, long n2)
 
 	if (!piles)
 		return (0);
-	if (piles->len < 2)
+	if (piles->len_total < 2)
 		return (0);
 	pile = piles->a;
 	while (pile)

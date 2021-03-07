@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/03 14:39:58 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/06 19:28:13 by ndemont          ###   ########.fr       */
+/*   Created: 2021/03/04 11:02:21 by ndemont           #+#    #+#             */
+/*   Updated: 2021/03/07 12:21:34 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_swap(t_piles *piles)
+int		main(int ac, char **av)
 {
-	(void)piles;
+	t_piles *piles;
+
+	if (ac == 1)
+		return (1);
+	piles = init_piles();
+	parsing(ac, av, piles);
+	print_piles(piles);
+	heap_sort(piles);
+	print_piles(piles);
+	free_piles(piles);
+	return (0);
 }

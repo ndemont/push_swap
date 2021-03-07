@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 12:31:36 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/06 19:06:10 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/06 22:45:55 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int		push_b(t_piles *piles)
 {
 	t_list	*pile_a1;
 	t_list	*pile_a2;
+	t_list	*new;
+	long	*copy;
 
 	write(1, "pb\n", 3);
 	pile_a1 = piles->a;
@@ -45,8 +47,15 @@ int		push_b(t_piles *piles)
 	if (!pile_a1)
 		return (print_piles(piles));
 	pile_a2 = piles->a->next;
-	ft_lstadd_front(&piles->b, pile_a1);
+	copy = malloc(sizeof(long*));
+	*copy = *(long *)pile_a1->content;
+	new = ft_lstnew(copy);
+	ft_lstadd_front(&piles->b, new);
+	ft_lstdelone(pile_a1, &free);
+	pile_a1 = 0;
 	piles->a = pile_a2;
+	piles->len_b++;
+	piles->len_a--;
 	return (print_piles(piles));
 }
 
