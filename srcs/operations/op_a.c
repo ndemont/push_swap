@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 12:31:56 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/06 22:45:02 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/08 10:47:52 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,14 @@ int		swap_a(t_piles *piles, int print)
 	return (print_piles(piles));
 }
 
-int		push_a(t_piles *piles)
+int		push_a(t_piles *piles, int print)
 {
 	t_list	*pile_b1;
 	t_list	*pile_b2;
 	t_list	*new;
 	long	*copy;
 
+	(void)print;
 	write(1, "pa\n", 3);
 	pile_b1 = piles->b;
 	if (!piles)

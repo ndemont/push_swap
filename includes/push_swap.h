@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 14:34:04 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/07 12:42:08 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/08 11:23:02 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ t_list				*ft_lstdup(t_list *lst, void (*del)(void *));
 t_list				*ft_lstmap(t_list *l, void *(*f)(void *), void (*d)(void *));
 void				ft_putnbr_fd(long n, int fd);
 int					ft_strcmp(const char *s1, const char *s2);
+char				**ft_split(char const *s, char c);
+char				*ft_strjoin(char const *s1, char const *s2);
 
 /*parsing*/
 
@@ -67,18 +69,18 @@ t_piles 			*init_piles(void);
 
 void				ft_lstremove_last(t_list *lst, void (*del)(void *));
 
-void				push_swap(t_piles *piles);
+void				push_swap(t_piles *piles, int print);
 int					swap_a(t_piles *piles, int print);
 int					swap_b(t_piles *piles, int print);
-int					swap_both(t_piles *piles);
-int					push_a(t_piles *piles);
-int					push_b(t_piles *piles);
+int					swap_both(t_piles *piles, int print);
+int					push_a(t_piles *piles, int print);
+int					push_b(t_piles *piles, int print);
 int					rotate_a(t_piles *piles, int print);
 int					rotate_b(t_piles *piles, int print);
-int					rotate_both(t_piles *piles);
+int					rotate_both(t_piles *piles, int print);
 int					reverse_rotate_a(t_piles *piles, int print);
 int					reverse_rotate_b(t_piles *piles, int print);
-int					reverse_rotate_both(t_piles *piles);
+int					reverse_rotate_both(t_piles *piles, int print);
 
 void				heap_sort(t_piles *piles);
 
