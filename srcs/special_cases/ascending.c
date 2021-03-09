@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ascending.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ndemont <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/04 11:02:21 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/09 16:55:46 by ndemont          ###   ########.fr       */
+/*   Created: 2021/03/09 14:47:03 by ndemont           #+#    #+#             */
+/*   Updated: 2021/03/09 14:47:08 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		main(int ac, char **av)
+int		check_ascending_order(t_list *pile_a)
 {
-	t_piles *piles;
+	t_list	*list;
 
-	if (ac == 1)
+	list = pile_a;
+	if (!list)
 		return (1);
-	piles = init_piles();
-	parsing(ac, av, piles);
-	//heap_sort(piles);
-	bubble_sort(piles);
-	free_piles(piles);
-	return (0);
+	while (list->next)
+	{
+		if (*(long *)list->content > *(long *)list->next->content)
+			return  (0);
+		list = list->next;
+	}	
+	return (1);
 }
+

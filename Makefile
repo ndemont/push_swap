@@ -38,6 +38,7 @@ clean:
 fclean:
 					${RM} ${OBJS_DIR}
 					${RM} ${NAME}
+					${RM} ${CHECK}
 
 re:					fclean all
 
