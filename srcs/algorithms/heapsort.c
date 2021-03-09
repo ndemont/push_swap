@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 22:15:55 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/07 11:52:23 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/09 11:10:46 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	move_up(t_piles *piles, int count)
 		rotate_b(piles, 1);
 		count--;
 	}
-	push_b(piles);
+	push_b(piles, 1);
 	while (count < count2)
 	{
 		reverse_rotate_b(piles, 1);
@@ -40,7 +40,7 @@ void	move_down(t_piles *piles, int count)
 		reverse_rotate_b(piles, 1);
 		count++;
 	}
-	push_b(piles);
+	push_b(piles, 1);
 	while (count >= count2)
 	{
 		rotate_b(piles, 1);
@@ -58,7 +58,7 @@ void	heap_sort(t_piles *piles)
 	while (piles->a)
 	{
 		if (!piles->b)
-			push_b(piles);
+			push_b(piles, 1);
 		else
 		{
 			count = 0;
@@ -80,5 +80,5 @@ void	heap_sort(t_piles *piles)
 		}
 	}
 	while(piles->b)
-		push_a(piles);
+		push_a(piles, 1);
 }

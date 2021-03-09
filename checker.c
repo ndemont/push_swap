@@ -6,11 +6,12 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 12:31:31 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/08 11:39:57 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/09 13:23:35 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "get_next_line.h"
 
 int			get_instruction(char *line)
 {
@@ -32,7 +33,7 @@ int			get_instruction(char *line)
 	return (-1);
 }
 
-char		*execute_instruction(t_piles *piles, char **instructions)
+void		execute_instruction(t_piles *piles, char **instructions)
 {
 	int	(*op[11])(t_piles *, int);
 	int	ret;
@@ -60,6 +61,7 @@ char		*execute_instruction(t_piles *piles, char **instructions)
 		str++;
 	}
 }
+
 char	**read_instructions(t_piles *piles)
 {
 	char	*content;
@@ -100,7 +102,10 @@ int		main(int ac, char *av)
 	parsing(ac, av, piles);
 	instructions = read_instructions(piles);
 	execute_instructions(instructions);
-	check_growing_list(piles);          
-	free_p  il  es(piles);
+	if (check_ascending_order(piles))
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);	
+	free_piles(piles);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 14:34:04 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/08 11:23:02 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/09 13:22:27 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,10 @@ void				ft_putnbr_fd(long n, int fd);
 int					ft_strcmp(const char *s1, const char *s2);
 char				**ft_split(char const *s, char c);
 char				*ft_strjoin(char const *s1, char const *s2);
-
+char				*ft_strdup(const char *s1);
+char				*ft_strchr(const char *s, int c);
+char				*ft_substr(char const *s, unsigned int start, size_t len);
+char				*ft_strnstr(const char *haystack, const char *needle, size_t len);
 /*parsing*/
 
 int					check_digit(char *str);
@@ -83,6 +86,9 @@ int					reverse_rotate_b(t_piles *piles, int print);
 int					reverse_rotate_both(t_piles *piles, int print);
 
 void				heap_sort(t_piles *piles);
+
+int					check_ascending_order(t_list *pile_a);
+int					check_ascending_order(t_list *pile_a);
 
 int					print_piles(t_piles *piles);
 

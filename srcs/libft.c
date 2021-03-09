@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:07:54 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/08 11:22:51 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/09 13:13:44 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -309,4 +309,87 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	cat[i] = '\0';
 	return (cat);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	char	*dup;
+	size_t	i;
+	size_t	len;
+
+	len = ft_strlen(s1);
+	if (!(dup = malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		dup[i] = s1[i];
+		i++;
+	}
+	dup[i] = s1[i];
+	return (dup);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*(char*)s != '\0')
+	{
+		if (c == *(char*)s)
+			return ((char*)s);
+		s++;
+	}
+	if (c == *(char*)s)
+		return ((char*)s);
+	else
+		return (NULL);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*dup;
+	size_t	i;
+	size_t	size;
+
+	if (!s)
+		return (0);
+	if (!(dup = malloc(sizeof(char) * (len + 1))))
+		return (0);
+	i = 0;
+	size = ft_strlen(s);
+	while (i < len && (start + i) < size)
+	{
+		dup[i] = s[start + i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
+}
+
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+{
+	size_t	i;
+	size_t	j;
+	size_t	begin;
+
+	i = 0;
+	if (needle[i] == '\0')
+		return ((char*)haystack);
+	while (haystack[i] && i < len)
+	{
+		j = 0;
+		begin = i;
+		if (haystack[i] == needle[j])
+		{
+			while (haystack[i] == needle[j] && i < len && \
+					haystack[i] && needle[j])
+			{
+				i++;
+				j++;
+			}
+			if (needle[j] == '\0')
+				return (&((char*)haystack)[begin]);
+		}
+		i = begin + 1;
+	}
+	return (NULL);
 }
