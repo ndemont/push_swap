@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 14:34:04 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/09 16:55:21 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/10 12:03:43 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int					reverse_rotate_both(t_piles *piles, int print);
 
 void				bubble_sort(t_piles *piles);
 void				heap_sort(t_piles *piles);
+void				heap_sort_magic(t_piles *piles);
 
 int					check_ascending_order(t_list *pile_a);
 int					check_ascending_order(t_list *pile_a);
