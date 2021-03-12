@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 22:15:55 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/09 17:09:40 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/12 14:07:07 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void	bubble_sort(t_piles *piles)
 	count1 = 1;
 	while (count1 < piles->len_total)
 	{
-		if (check_ascending_order(piles->a))
+		if (ascending_order(piles->a))
 				return ;
 		list = piles->a;
 		count2 = 1;
 		while (count2 < piles->len_total)
 		{
-			if (check_ascending_order(piles->a))
+			if (ascending_order(piles->a))
 				return ;
 			if (*(long *)list->content > *(long *)list->next->content)
 				swap_a(piles, 1);

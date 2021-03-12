@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 15:00:17 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/06 22:37:48 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/12 16:08:53 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		check_options(int i, char *av, t_piles *piles)
 {
-	if (i < 3)
+	if (i < 2)
 	{
 		if ((!ft_strcmp(av, "-v")) && (!piles->v))
 			piles->v = 1;
@@ -41,7 +41,9 @@ int		check_options(int i, char *av, t_piles *piles)
 void	parsing(int ac, char **av, t_piles *piles)
 {
 	long	i;
+	long	j;
 	long	*nb;
+	char	**split;
 	t_list	*new;
 
 	i = 1;
@@ -52,15 +54,32 @@ void	parsing(int ac, char **av, t_piles *piles)
 			i++;
 			continue ;
 		}
-		nb = check_errors(av[i], piles);
-		new = ft_lstnew(nb);
-		if (!new)
+		split = ft_split(av[i], ' ');
+		j = 0;
+		while (split && split[j])
 		{
-			free(nb);
-			print_errors(piles);
+			nb = check_errors(split[j], piles);
+			if (!piles->len_total)
+			{
+				piles->min = *nb;
+				piles->max = *nb;
+			}
+			else
+			{
+				if (*nb > piles->max)
+					piles->max = *nb;
+				if (*nb < piles->min)
+					piles->min = *nb;
+			new = ft_lstnew(nb);
+			if (!new)
+			{
+				free(nb);
+				print_errors(piles);
+			}
+			ft_lstadd_back(&piles->a, new);
+			piles->len_total++;
+			j++;
 		}
-		ft_lstadd_back(&piles->a, new);
-		piles->len_total++;
 		i++;
 	}
 	piles->len_a = piles->len_total;

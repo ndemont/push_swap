@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 22:15:55 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/10 12:26:59 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/12 16:03:41 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void	move_up3(t_piles *piles, int count)
 		rotate_b(piles, 1);
 		count--;
 	}
-	push_b(piles, 1);
 }
 
 void	move_down3(t_piles *piles, int count)
@@ -61,7 +60,6 @@ void	move_down3(t_piles *piles, int count)
 		reverse_rotate_b(piles, 1);
 		count++;
 	}
-	push_b(piles, 1);
 }
 
 long	find_pos_min(t_list *list, long min)
@@ -70,7 +68,7 @@ long	find_pos_min(t_list *list, long min)
 	long 	count;
 
 	temp = list;
-	count = 0;
+	count = 1;
 	while (temp)
 	{
 		if (min == *(long *)temp->content)
@@ -87,7 +85,7 @@ long	find_pos_max(t_list *list, long max)
 	long 	count;
 
 	temp = list;
-	count = 1;
+	count = 0;
 	while (temp)
 	{
 		if (max == *(long *)temp->content)
@@ -107,12 +105,12 @@ long	find_pos_middle(t_list *list, long nb)
 	pos = 1;
 	while (temp->next)
 	{
-		if (nb < *(long *)list->content && nb > *(long *)list->next->content)
+		if (nb > *(long *)temp->content && nb < *(long *)temp->next->content)
 			return (pos);
 		pos++;
 		temp = temp->next;
 	}
-	return (-1);
+	return (1);
 }
 
 long	find_last(t_list *list)
@@ -132,15 +130,27 @@ int		find_pos(long min, long max, t_piles *piles)
 	long	pos;
 	long	first;
 	long	last;
+	long	len;
 
 	first = *(long *)piles->b->content;
 	last = find_last(piles->b);
-	if (piles->len_b > 1 && (*(long *)piles->a->content > max | *(long *)piles->a->content < min))
+	len = piles->len_b;
+	if (piles->len_b > 2 && (*(long *)piles->a->content > max | *(long *)piles->a->content < min))
+	{
 		pos = find_pos_min(piles->b, min);
-	if (*(long *)piles->a->content > first && *(long *)piles->a->content < last)
+	}
+	else if (piles->len_b == 1)
+	{
 		pos = 0;
+	}
+	else if (piles->len_b > 2 && (*(long *)piles->a->content > first && *(long *)piles->a->content < last))
+	{
+		pos = 0;
+	}
 	else
+	{
 		pos = find_pos_middle(piles->b, *(long *)piles->a->content);
+	}	
 	return (pos);
 }
 
@@ -170,7 +180,7 @@ void reverse_range_pile(t_piles *piles, long max)
 
 void	heap_sort_magic(t_piles *piles)
 {
-	int		count;
+	long	count;
 	long	max;
 	long	min;
 	long	pos;
@@ -187,7 +197,7 @@ void	heap_sort_magic(t_piles *piles)
 		else
 		{
 			pos = find_pos(min, max, piles);
-			if (pos > piles->len_b / 2)
+			if (pos > (piles->len_b / 2) + 1)
 			{
 				direction = 0;
 				count = piles->len_b - pos -1;
@@ -197,10 +207,14 @@ void	heap_sort_magic(t_piles *piles)
 				direction = 1;
 				count = pos;
 			}
+			if (*(long *)piles->a->content < min)
+				min = *(long *)piles->a->content;
+			if (*(long *)piles->a->content > max)
+				max = *(long *)piles->b->content;
 			if (direction)
-				move_up2(piles, pos);
+				move_up2(piles, count);
 			else
-				move_down2(piles, pos);
+				move_down2(piles, count);
 		}
 	}
 	reverse_range_pile(piles, max);
