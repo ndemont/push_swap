@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 22:15:55 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/09 11:10:46 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/10 11:20:20 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	heap_sort(t_piles *piles)
 			count = 0;
 			direction = 0;
 			pile_b = piles->b;
-			if (pile_b)
 			while (pile_b && *(long *)piles->a->content < *(long *)pile_b->content)
 			{
 				pile_b = pile_b->next;
