@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:02:21 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/12 16:06:11 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/16 15:55:56 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,14 @@ int		main(int ac, char **av)
 	piles = init_piles();
 	parsing(ac, av, piles);
 	if (!ascending_order(piles->a))
-		heap_sort_magic(piles);
+	{
+		if (piles->len_total == 2)
+			rotate_a(piles, 1);
+		else if (piles->len_total == 3)
+			three_sort(piles);
+		else
+			heap_sort_magic(piles);
+	}
 	free_piles(piles);
 	return (0);
 }

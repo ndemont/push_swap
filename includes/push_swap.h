@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 14:34:04 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/12 16:04:41 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/16 16:39:17 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,14 @@ typedef struct		s_piles
 	long		len_b;
 	long		min;
 	long		max;
+	long		prev_min;
 	t_list		*a;
 	t_list		*b;
 }					t_piles;
 
 /*libft*/
 size_t				ft_strlen(const char *s);
-int					ft_atoi(const char *str);
+float				ft_atoi(const char *str);
 void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstadd_back(t_list **alst, t_list *new);
 void				ft_lstadd_front(t_list **alst, t_list *new);
@@ -93,6 +94,7 @@ void				three_sort(t_piles *piles);
 
 int					ascending_order(t_list *pile_a);
 int					descending_order(t_list *pile_a);
+int					check_empty(t_list *list);
 
 int					print_piles(t_piles *piles);
 

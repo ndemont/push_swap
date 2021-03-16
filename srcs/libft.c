@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:07:54 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/09 13:13:44 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/16 13:50:42 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t	ft_strlen(const char *s)
 	return (len);
 }
 
-int		ft_atoi(const char *str)
+float		ft_atoi(const char *str)
 {
 	int		i;
 	long	nb;
@@ -211,75 +211,83 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (c);
 }
 
-int			ft_count_strlen(const char *s, char c)
+static int    is_sep(char c, char d)
 {
-	int	count;
-
-	count = 0;
-	while (s[count] != c && s[count])
-		count++;
-	return (count);
+    if (c == d)
+        return (1);
+    else
+        return (0);
 }
 
-int			ft_count_splitlen(const char *s, char c)
+static int    count_words(const char *s, char c)
 {
-	int	count;
+    int    i;
+    int    count;
 
-	count = 0;
-	s++;
-	while (*(s - 1) && *s)
-	{
-		if (*s == c && *(s - 1) != c)
-			count++;
-		s++;
-	}
-	if (*(s - 1) && *(s - 1) != c)
-		count++;
-	return (count);
+    i = 0;
+    count = 0;
+    while (s[i])
+    {
+        if (!(is_sep(s[i], c)) && ((is_sep(s[i + 1], c)) || s[i + 1] == '\0'))
+            count++;
+        i++;
+    }
+    return (count);
 }
 
-const char	*ft_dup_split(char **split, int i, const char *s, char c)
+static void    ft_fill_tab(char *tab, const char *str, int i, int j)
 {
-	int j;
+    int    r;
 
-	if (!(split[i] = malloc(sizeof(char) * (ft_count_strlen(s, c) + 1))))
-		return (0);
-	j = 0;
-	while (*s != c && *s)
-	{
-		split[i][j] = *s;
-		j++;
-		s++;
-	}
-	split[i][j] = '\0';
-	return (s);
+    r = 0;
+    while (j < i)
+    {
+        tab[r] = str[j];
+        j++;
+        r++;
+    }
+    tab[r] = '\0';
 }
 
-char				**ft_split(char const *s, char c)
+char        *ft_split2(char const *s, char c, int *i, int *j)
 {
-	char	**split;
-	int		count;
-	int		i;
+    char    *tab;
 
-	if (!s)
-		return (NULL);
-	count = ft_count_splitlen((char*)s, c);
-	if (!(split = malloc(sizeof(char*) * (count + 1))))
-		return (0);
-	split[count] = 0;
-	i = 0;
-	while (i < count && *s)
-	{
-		if (*s != c)
-		{
-			if (!(s = ft_dup_split(split, i, s, c)))
-				return (NULL);
-			i++;
-		}
-		else
-			s++;
-	}
-	return (split);
+    while (is_sep(s[*i], c) && s[*i])
+        (*i)++;
+    *j = *i;
+    while ((!(is_sep(s[*i], c))) && s[*i])
+        (*i)++;
+    tab = malloc(sizeof(char) * ((*i - *j) + 1));
+    if (!tab)
+        return (NULL);
+    return (tab);
+}
+
+char        **ft_split(char const *s, char c)
+{
+    int        i;
+    int        j;
+    int        k;
+    char    **tab;
+
+    i = 0;
+    k = 0;
+    if (!s)
+        return (NULL);
+    tab = malloc(sizeof(char*) * (count_words(s, c) + 1));
+    if (!tab)
+        return (NULL);
+    while (s[i] && k < count_words(s, c))
+    {
+        tab[k] = ft_split2(s, c, &i, &j);
+        if (!(tab[k]))
+            return (NULL);
+        ft_fill_tab(tab[k], s, i, j);
+        k++;
+    }
+    tab[k] = 0;
+    return (tab);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)

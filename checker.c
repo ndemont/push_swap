@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 12:31:31 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/12 15:14:00 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/16 14:33:26 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,12 @@ int		main(int ac, char **av)
 	instructions = read_instructions(piles);
 	execute_instructions(piles, instructions);
 	if (ascending_order(piles->a))
-		write(1, "OK\n", 3);
+	{
+		if (check_empty(piles->b))
+			write(1, "OK\n", 3);
+		else
+			write(1, "KO\n", 3);	
+	}
 	else
 		write(1, "KO\n", 3);	
 	free_piles(piles);

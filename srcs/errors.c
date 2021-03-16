@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 15:02:30 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/12 14:14:08 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/16 14:18:03 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ long	*check_errors(char *av, t_piles *piles)
 		print_errors(piles);
 	if (ft_strlen(av) > 11)
 		print_errors(piles);
-	nb = malloc(sizeof(long));
+	nb = (long *)malloc(sizeof(long));
 	if (!nb)
 		print_errors(piles);
 	*nb = ft_atoi(av);

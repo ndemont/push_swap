@@ -4,7 +4,7 @@ CLEAR				= \033[2K\c
 CC					= clang
 RM					= rm -rf
 
-CFLAGS				= -Wall -Wextra -Werror
+CFLAGS				= -Wall -Wextra -Werror -g3
 IFLAGS				= -I${INC_DIR}
 
 SRCS_DIR			= srcs
