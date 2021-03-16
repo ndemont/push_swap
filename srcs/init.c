@@ -24,11 +24,11 @@ t_piles		*init_piles(void)
 	pile_a = malloc(sizeof(t_list *));
 	if (!pile_a)
 		print_errors(piles);
-	pile_a = 0;
 	pile_b = malloc(sizeof(t_list *));
 	if (!pile_b)
 		print_errors(piles);
 	pile_b = 0;
+	pile_a = 0;
 	piles->b = pile_b;
 	piles->a = pile_a;
 	piles->v = 0;

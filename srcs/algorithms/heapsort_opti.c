@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 22:15:55 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/12 16:03:41 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/14 19:08:28 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	move_down2(t_piles *piles, int count)
 	int count2;
 
 	count2 = count;
-	while (count < piles->len_b)
+	while (count < piles->len_b - 1)
 	{
 		reverse_rotate_b(piles, 1);
 		count++;
@@ -55,10 +55,10 @@ void	move_down3(t_piles *piles, int count)
 	int count2;
 
 	count2 = count;
-	while (count < piles->len_b)
+	while (count > 0)
 	{
 		reverse_rotate_b(piles, 1);
-		count++;
+		count--;
 	}
 }
 
@@ -105,7 +105,7 @@ long	find_pos_middle(t_list *list, long nb)
 	pos = 1;
 	while (temp->next)
 	{
-		if (nb > *(long *)temp->content && nb < *(long *)temp->next->content)
+		if (nb < *(long *)temp->content && nb > *(long *)temp->next->content)
 			return (pos);
 		pos++;
 		temp = temp->next;
@@ -143,7 +143,11 @@ int		find_pos(long min, long max, t_piles *piles)
 	{
 		pos = 0;
 	}
-	else if (piles->len_b > 2 && (*(long *)piles->a->content > first && *(long *)piles->a->content < last))
+	else if ((*(long *)piles->a->content > first && *(long *)piles->a->content < last))
+	{
+		pos = 0;
+	}
+	else if (*(long *)piles->a->content > first && *(long *)piles->a->content > last)
 	{
 		pos = 0;
 	}
@@ -151,6 +155,7 @@ int		find_pos(long min, long max, t_piles *piles)
 	{
 		pos = find_pos_middle(piles->b, *(long *)piles->a->content);
 	}	
+	printf ("pos = %ld\n", pos);
 	return (pos);
 }
 
@@ -158,9 +163,10 @@ void reverse_range_pile(t_piles *piles, long max)
 {
 	long	pos;
 	long	count;
-	int		direction;
+	int	direction;
 
 	pos = find_pos_max(piles->b, max);
+	//printf("pos max = %ld\n", pos);
 	if (pos > piles->len_b / 2)
 	{
 		direction = 0;
@@ -171,11 +177,23 @@ void reverse_range_pile(t_piles *piles, long max)
 		direction = 1;
 		count = pos;
 	}
+	//printf("count = %ld\n", count);
 	if (direction)
 		move_up3(piles, count);
 	else
 		move_down3(piles, count);
 
+}
+
+void	put_min_last(t_piles *piles)
+{
+	if (*(long *)piles->a->content == piles->min)
+		rotate_a(piles, 1);
+}
+
+void	put_min_first(t_piles *piles)
+{
+	reverse_rotate_a(piles, 1);
 }
 
 void	heap_sort_magic(t_piles *piles)
@@ -184,14 +202,27 @@ void	heap_sort_magic(t_piles *piles)
 	long	max;
 	long	min;
 	long	pos;
-	int		direction;
-
-	while (piles->a)
+	long	i;
+	int	check;
+	int	direction;
+	long	nb;
+	
+	i = piles->len_total;
+	check = 0;
+	min = 0;
+	max = 0;
+	while (i > 0)
 	{
-		if (!piles->b)
+		nb = *(long *)piles->a->content;
+		if (*(long *)piles->a->content == piles->min || (*(long *)piles->a->content) == piles->max)
+		{
+			rotate_a(piles, 1);
+		}
+		else if (!check)
 		{
 			min = *(long *)piles->a->content;
 			max = *(long *)piles->a->content;
+			check = 1;
 			push_b(piles, 1);
 		}
 		else
@@ -201,23 +232,28 @@ void	heap_sort_magic(t_piles *piles)
 			{
 				direction = 0;
 				count = piles->len_b - pos -1;
+				if (count < 0)
+					count = 0;
 			}
 			else
 			{
 				direction = 1;
 				count = pos;
 			}
-			if (*(long *)piles->a->content < min)
-				min = *(long *)piles->a->content;
-			if (*(long *)piles->a->content > max)
-				max = *(long *)piles->b->content;
+			if (nb < min)
+				min = nb;
+			if (nb > max)
+				max = nb;
 			if (direction)
 				move_up2(piles, count);
 			else
 				move_down2(piles, count);
 		}
+		i--;
 	}
 	reverse_range_pile(piles, max);
+	put_min_last(piles);
 	while(piles->b)
 		push_a(piles, 1);
+	put_min_first(piles);
 }

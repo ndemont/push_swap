@@ -70,13 +70,17 @@ void	parsing(int ac, char **av, t_piles *piles)
 					piles->max = *nb;
 				if (*nb < piles->min)
 					piles->min = *nb;
+			}
 			new = ft_lstnew(nb);
 			if (!new)
 			{
 				free(nb);
 				print_errors(piles);
 			}
-			ft_lstadd_back(&piles->a, new);
+			if (!piles->len_total)
+				piles->a = new;
+			else
+				ft_lstadd_back(&piles->a, new);
 			piles->len_total++;
 			j++;
 		}

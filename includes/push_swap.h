@@ -23,15 +23,15 @@
 
 typedef struct		s_list
 {
-	void			*content;
+	void		*content;
 	struct s_list	*next;
 }					t_list;
 
 typedef struct		s_piles
 {
-	int			v;
-	int			c;
-	int			len_total;
+	int		v;
+	int		c;
+	int		len_total;
 	long		len_a;
 	long		len_b;
 	long		min;

@@ -17,6 +17,8 @@ int	print_piles(t_piles *piles)
 	t_list	*pile_a;
 	t_list	*pile_b;
 
+	if (!piles)
+		return (0);
 	if (!piles->v)
 		return (0);
 	if (piles)
