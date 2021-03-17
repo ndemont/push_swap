@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:53:48 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/06 19:22:59 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/17 17:27:07 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,13 @@ int	print_piles(t_piles *piles)
 	t_list	*pile_a;
 	t_list	*pile_b;
 
+	printf(CLEAR);
+	printf(CYAN);
+	printf("%11c", 'A');
+	printf(PURPLE);
+	printf("%3c", 'B');
+	printf(WHITE);
+	printf("\n%9c--------\n", '-');
 	if (!piles)
 		return (0);
 	if (!piles->v)
@@ -27,20 +34,26 @@ int	print_piles(t_piles *piles)
 		pile_b = piles->b;
 		while (pile_a || pile_b)
 		{
+			printf(CYAN);
 			if (pile_a)
 			{
-				ft_putnbr_fd(*(long *)pile_a->content, 1);
+				printf("%11ld", *(long *)pile_a->content);
 				pile_a = pile_a->next;
 			}
-			write(1, "\t\t", 2);
+			else
+				printf("%11c", ' ');
+			printf(WHITE);
+			printf(" | ");
+			printf(PURPLE);
 			if (pile_b)
 			{
-				ft_putnbr_fd(*(long *)pile_b->content, 1);
+				printf("%ld", *(long *)pile_b->content);
 				pile_b = pile_b->next;
 			}
-			write(1, "\n", 1);
+			printf("\n");
+			printf(WHITE);
 		}
 	}
-	write(1, "______________________\na\t\tb\n\n\n", 30);
+	usleep(100000);
 	return (1);
 }
