@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 22:15:55 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/16 17:28:53 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/17 11:00:26 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,7 +275,7 @@ void	heap_sort_magic(t_piles *piles)
 		if (*(long *)piles->a->content == piles->min || (*(long *)piles->a->content) == piles->max)
 		{
 			if (*(long *)piles->a->content == piles->min)
-				piles->prev_min = piles->min;
+				piles->prev_min = piles->min; 
 			if (*(long *)piles->a->content != piles->max)
 				piles->prev_min = piles->max;
 			rotate_a(piles, 1);
@@ -323,7 +323,6 @@ void	heap_sort_magic(t_piles *piles)
 	//put_max_first(piles);
 	while(piles->b)
 	{
-		if (*(long *)piles->b->content < 
 		push_a(piles, 1);
 	}
 	put_min_first(piles);

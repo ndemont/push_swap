@@ -29,16 +29,16 @@ typedef struct		s_list
 
 typedef struct		s_piles
 {
-	int		v;
-	int		c;
-	int		len_total;
-	long		len_a;
-	long		len_b;
-	long		min;
-	long		max;
-	long		prev_min;
-	t_list		*a;
-	t_list		*b;
+	int				v;
+	int				c;
+	int				len_total;
+	long			len_a;
+	long			len_b;
+	long			min;
+	long			max;
+	long			prev_min;
+	t_list			*a;
+	t_list			*b;
 }					t_piles;
 
 /*libft*/
