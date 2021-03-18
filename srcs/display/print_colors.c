@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.c                                            :+:      :+:    :+:   */
+/*   print_colors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:53:48 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/18 16:03:14 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/18 22:47:45 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	print_piles(t_piles *piles)
+int	print_colors_piles(t_piles *piles)
 {
 	t_list	*pile_a;
 	t_list	*pile_b;
 
-	if (!piles)
-		return (0);
-	if (!piles->v)
-		return (0);
 	if (piles)
 	{
 		printf(CLEAR);

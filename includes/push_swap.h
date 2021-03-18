@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 14:34:04 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/18 14:56:07 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/18 22:46:10 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,10 @@ int					check_empty(t_list *list);
 void				put_min_first(t_piles *piles);
 
 int					print_piles(t_piles *piles);
+int					print_colors_piles(t_piles *piles);
+int					print_nocolors_piles(t_piles *piles);
+int					print_sticks(t_piles *piles);
+
 
 void				free_piles(t_piles *piles);
 
