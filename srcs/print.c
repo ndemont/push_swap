@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:53:48 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/17 17:27:07 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/18 16:03:14 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,16 @@ int	print_piles(t_piles *piles)
 	t_list	*pile_a;
 	t_list	*pile_b;
 
-	printf(CLEAR);
-	printf(CYAN);
-	printf("%11c", 'A');
-	printf(PURPLE);
-	printf("%3c", 'B');
-	printf(WHITE);
-	printf("\n%9c--------\n", '-');
 	if (!piles)
 		return (0);
 	if (!piles->v)
 		return (0);
 	if (piles)
 	{
+		printf(CLEAR);
+		printf("%11c", 'A');
+		printf("%4c", 'B');
+		printf("\n%9c--------\n", '-');
 		pile_a = piles->a;
 		pile_b = piles->b;
 		while (pile_a || pile_b)
@@ -54,6 +51,6 @@ int	print_piles(t_piles *piles)
 			printf(WHITE);
 		}
 	}
-	usleep(100000);
+	usleep(10000);
 	return (1);
 }

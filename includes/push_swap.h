@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 14:34:04 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/17 17:16:40 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/18 14:56:07 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ typedef struct		s_piles
 	long			min;
 	long			max;
 	long			prev_min;
+	long			*mediane;
+	long			steps;
 	t_list			*a;
 	t_list			*b;
 }					t_piles;
@@ -100,10 +102,13 @@ void				bubble_sort(t_piles *piles);
 void				heap_sort(t_piles *piles);
 void				heap_sort_magic(t_piles *piles);
 void				three_sort(t_piles *piles);
+void       			thib_sort(t_piles *piles);
 
 int					ascending_order(t_list *pile_a);
 int					descending_order(t_list *pile_a);
 int					check_empty(t_list *list);
+
+void				put_min_first(t_piles *piles);
 
 int					print_piles(t_piles *piles);
 

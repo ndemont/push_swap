@@ -1,10 +1,9 @@
 NAME				= push_swap
-CHECK				= checker
 CLEAR				= \033[2K\c
 CC					= clang
 RM					= rm -rf
 
-CFLAGS				= -Wall -Wextra -Werror -g3
+CFLAGS				= -Wall -Wextra -Werror
 IFLAGS				= -I${INC_DIR}
 
 SRCS_DIR			= srcs
@@ -22,10 +21,8 @@ init:
 					$(shell mkdir -p ${OBJS_DIR})
 
 ${NAME}:			${OBJS}
-					${CC} ${CFLAGS} ${IFLAGS} push_swap.c -o $@ $^ 
-
-${CHECK}:			${OBJS}
-					${CC} ${CFLAGS} ${IFLAGS} checker.c -o $@ $^
+					${CC} ${CFLAGS} ${IFLAGS} push_swap.c -o $@ $^
+					${CC} ${CFLAGS} ${IFLAGS} checker.c -o checker $^
 
 ${OBJS_DIR}/%.o:	%.c
 					@echo "${CLEAR}"
