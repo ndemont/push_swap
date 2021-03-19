@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mediane_sort.c                                     :+:      :+:    :+:   */
+/*   median_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 22:15:55 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/19 21:32:48 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/19 22:11:20 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	fill_pile_b(t_piles *piles, long count, int i)
 	while (count)
 	{
 		if (*(long *)piles->a->content <= piles->mediane[i])
-			push_b(piles, 1);
+			push_b(piles, 1, piles->fd);
 		else
-			rotate_a(piles, 1);
+			rotate_a(piles, 1, piles->fd);
 		count--;
 	}
 }
@@ -42,14 +42,14 @@ void	fill_pile_a(t_piles *piles, int *remaining)
 		while (final.moves > 0)
 		{
 			if (!final.dir)
-				rotate_b(piles, 1);
+				rotate_b(piles, 1, piles->fd);
 			else
-				reverse_rotate_b(piles, 1);
+				reverse_rotate_b(piles, 1, piles->fd);
 			final.moves--;
 		}
-		push_a(piles, 1);
+		push_a(piles, 1, piles->fd);
 		if (final.pos != max.pos && piles->len_a > 1)
-			rotate_a(piles, 1);
+			rotate_a(piles, 1, piles->fd);
 	}
 }
 
@@ -66,7 +66,7 @@ void	place_pile_a(t_piles *piles, int i)
 		{
 			while (move_up > 0)
 			{
-				rotate_a(piles, 1);
+				rotate_a(piles, 1, piles->fd);
 				move_up--;
 			}
 		}
@@ -74,7 +74,7 @@ void	place_pile_a(t_piles *piles, int i)
 		{
 			while (move_down > 0)
 			{
-				reverse_rotate_a(piles, 1);
+				reverse_rotate_a(piles, 1, piles->fd);
 				move_down--;
 			}
 		}
@@ -85,7 +85,7 @@ void	replace_pile_a(t_piles *piles, int i, int *remaining)
 {
 	while (i < (piles->steps - 1) && *remaining)
 	{
-		rotate_a(piles, 1);
+		rotate_a(piles, 1, piles->fd);
 		*remaining -= 1;
 	}
 }

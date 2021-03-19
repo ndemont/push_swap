@@ -1,4 +1,5 @@
 NAME				= push_swap
+CHECK				= checker
 CLEAR				= \033[2K\c
 CC					= clang
 RM					= rm -rf
@@ -22,7 +23,7 @@ init:
 
 ${NAME}:			${OBJS}
 					${CC} ${CFLAGS} ${IFLAGS} push_swap.c -o $@ $^
-					${CC} ${CFLAGS} ${IFLAGS} checker.c -o checker $^
+					${CC} ${CFLAGS} ${IFLAGS} checker.c -o ${CHECK} $^
 
 ${OBJS_DIR}/%.o:	%.c
 					@echo "${CLEAR}"

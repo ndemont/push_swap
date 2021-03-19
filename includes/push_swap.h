@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 14:34:04 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/19 21:37:48 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/19 22:36:52 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 
 typedef struct		s_list
 {
-	void		*content;
+	void			*content;
 	struct s_list	*next;
 }					t_list;
 
@@ -45,9 +45,9 @@ typedef struct		s_elem
 
 typedef struct		s_piles
 {
-	int				v;
-	int				c;
-	int				len_total;
+	t_list			*a;
+	t_list			*b;
+	long			len_total;
 	long			len_a;
 	long			len_b;
 	long			min;
@@ -55,8 +55,12 @@ typedef struct		s_piles
 	long			prev_min;
 	long			*mediane;
 	long			steps;
-	t_list			*a;
-	t_list			*b;
+	int				src;
+	int				dst;
+	int				fd;
+	int				c;
+	int				v;
+	int				s;
 }					t_piles;
 
 /*libft*/
@@ -93,17 +97,17 @@ t_piles 			*init_piles(void);
 void				ft_lstremove_last(t_list *lst, void (*del)(void *));
 
 void				push_swap(t_piles *piles, int print);
-int					swap_a(t_piles *piles, int print);
-int					swap_b(t_piles *piles, int print);
-int					swap_both(t_piles *piles, int print);
-int					push_a(t_piles *piles, int print);
-int					push_b(t_piles *piles, int print);
-int					rotate_a(t_piles *piles, int print);
-int					rotate_b(t_piles *piles, int print);
-int					rotate_both(t_piles *piles, int print);
-int					reverse_rotate_a(t_piles *piles, int print);
-int					reverse_rotate_b(t_piles *piles, int print);
-int					reverse_rotate_both(t_piles *piles, int print);
+int					swap_a(t_piles *piles, int print, int fd);
+int					swap_b(t_piles *piles, int print, int fd);
+int					swap_both(t_piles *piles, int print, int fd);
+int					push_a(t_piles *piles, int print, int fd);
+int					push_b(t_piles *piles, int print, int fd);
+int					rotate_a(t_piles *piles, int print, int fd);
+int					rotate_b(t_piles *piles, int print, int fd);
+int					rotate_both(t_piles *piles, int print, int fd);
+int					reverse_rotate_a(t_piles *piles, int print, int fd);
+int					reverse_rotate_b(t_piles *piles, int print, int fd);
+int					reverse_rotate_both(t_piles *piles, int print, int fd);
 
 void				bubble_sort(t_piles *piles);
 void				heap_sort(t_piles *piles);

@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 15:44:35 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/19 17:08:53 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/19 22:11:45 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@ void	three_sort(t_piles *piles)
 	n2 = *(long *)piles->a->next->content;
 	n3 = *(long *)piles->a->next->next->content;
 	if (n1 > n2 && n1 < n3 && n2 < n3)
-		swap_a(piles, 1);
+		swap_a(piles, 1, piles->fd);
 	else if (n1 > n2 && n1 > n3 && n2 > n3)
 	{
-		swap_a(piles, 1);
-		reverse_rotate_a(piles, 1);
+		swap_a(piles, 1, piles->fd);
+		reverse_rotate_a(piles, 1, piles->fd);
 	}
 	else if (n1 > n2 && n1 > n3 && n2 < n3)
-		rotate_a(piles, 1);
+		rotate_a(piles, 1, piles->fd);
 	else if (n1 < n2 && n1 < n3 && n2 > n3)
 	{
-		swap_a(piles, 1);
-		rotate_a(piles, 1);
+		swap_a(piles, 1, piles->fd);
+		rotate_a(piles, 1, piles->fd);
 	}
 	else
-		reverse_rotate_a(piles, 1);
+		reverse_rotate_a(piles, 1, piles->fd);
 }

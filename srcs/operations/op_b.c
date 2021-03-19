@@ -6,19 +6,19 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 12:31:36 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/08 10:46:15 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/19 22:07:18 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		swap_b(t_piles *piles, int print)
+int		swap_b(t_piles *piles, int print, int fd)
 {
 	t_list	*pile_b;
 	long	*tmp;
 
 	if (print)
-		write(1, "sb\n", 3);
+		write(fd, "sb\n", 3);
 	if (!piles)
 		return (print_piles(piles));
 	pile_b = piles->b;
@@ -33,15 +33,15 @@ int		swap_b(t_piles *piles, int print)
 	return (print_piles(piles));
 }
 
-int		push_b(t_piles *piles, int print)
+int		push_b(t_piles *piles, int print, int fd)
 {
 	t_list	*pile_a1;
 	t_list	*pile_a2;
 	t_list	*new;
 	long	*copy;
 
-	(void)print;
-	write(1, "pb\n", 3);
+	if (print)
+		write(fd, "pb\n", 3);
 	pile_a1 = piles->a;
 	if (!piles)
 		return (print_piles(piles));
@@ -60,7 +60,7 @@ int		push_b(t_piles *piles, int print)
 	return (print_piles(piles));
 }
 
-int		rotate_b(t_piles *piles, int print)
+int		rotate_b(t_piles *piles, int print, int fd)
 {
 	t_list	*new;
 	t_list	*pile_first;
@@ -68,7 +68,7 @@ int		rotate_b(t_piles *piles, int print)
 	long	*copy;
 
 	if (print)
-		write(1, "rb\n", 3);
+		write(fd, "rb\n", 3);
 	if (!piles)
 		return (print_piles(piles));
 	if (!piles->b)
@@ -89,14 +89,14 @@ int		rotate_b(t_piles *piles, int print)
 	return (print_piles(piles));
 }
 
-int		reverse_rotate_b(t_piles *piles, int print)
+int		reverse_rotate_b(t_piles *piles, int print, int fd)
 {
 	t_list	*pile_new;
 	t_list	*pile_last;
 	long	*copy;
 
 	if (print)
-		write(1, "rrb\n", 4);
+		write(fd, "rrb\n", 4);
 	if (!piles)
 		return (print_piles(piles));
 	if (!piles->b)

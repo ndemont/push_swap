@@ -6,19 +6,19 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 12:31:56 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/08 10:47:52 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/19 22:06:48 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		swap_a(t_piles *piles, int print)
+int		swap_a(t_piles *piles, int print, int fd)
 {
 	t_list	*pile_a;
 	long	*tmp;
 
 	if (print)
-		write(1, "sa\n", 3);
+		write(fd, "sa\n", 3);
 	if (!piles)
 		return (print_piles(piles));
 	pile_a = piles->a;
@@ -33,15 +33,15 @@ int		swap_a(t_piles *piles, int print)
 	return (print_piles(piles));
 }
 
-int		push_a(t_piles *piles, int print)
+int		push_a(t_piles *piles, int print, int fd)
 {
 	t_list	*pile_b1;
 	t_list	*pile_b2;
 	t_list	*new;
 	long	*copy;
 
-	(void)print;
-	write(1, "pa\n", 3);
+	if (print)
+		write(fd, "pa\n", 3);
 	pile_b1 = piles->b;
 	if (!piles)
 		return (print_piles(piles));
@@ -60,7 +60,7 @@ int		push_a(t_piles *piles, int print)
 	return (print_piles(piles));
 }
 
-int		rotate_a(t_piles *piles, int print)
+int		rotate_a(t_piles *piles, int print, int fd)
 {
 	t_list	*new;
 	t_list	*pile_first;
@@ -68,7 +68,7 @@ int		rotate_a(t_piles *piles, int print)
 	long	*copy;
 
 	if (print)
-		write(1, "ra\n", 3);
+		write(fd, "ra\n", 3);
 	if (!piles)
 		return (print_piles(piles));
 	if (!piles->a)
@@ -99,14 +99,14 @@ void	ft_lstremove_last(t_list *lst, void (*del)(void *))
 	lst->next = 0;
 }
 
-int		reverse_rotate_a(t_piles *piles, int print)
+int		reverse_rotate_a(t_piles *piles, int print, int fd)
 {
 	t_list	*pile_new;
 	t_list	*pile_last;
 	long	*copy;
 
 	if (print)
-		write(1, "rra\n", 4);
+		write(fd, "rra\n", 4);
 	if (!piles)
 		return (print_piles(piles));
 	if (!piles->a)

@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:02:21 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/19 18:56:35 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/19 22:13:05 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ int		main(int ac, char **av)
 		return (1);
 	piles = init_piles();
 	parsing(ac, av, piles);
+	piles->fd = 1;
 	if (!ascending_order(piles->a))
 	{
 		if (piles->len_total == 2)
-			rotate_a(piles, 1);
+			rotate_a(piles, 1, piles->fd);
 		else if (piles->len_total == 3)
 			three_sort(piles);
 		else

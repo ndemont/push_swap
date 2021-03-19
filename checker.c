@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 12:31:31 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/17 17:13:03 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/19 22:16:56 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int			get_instruction(char *line)
 
 void		execute_instructions(t_piles *piles, char **instructions)
 {
-	int	(*op[11])(t_piles *, int);
+	int	(*op[11])(t_piles *, int, int);
 	int	ret;
 	int x;
 	char **str;
@@ -53,7 +53,7 @@ void		execute_instructions(t_piles *piles, char **instructions)
 		x = get_instruction(*str);
 		if (x < 0)
 			print_errors(piles);
-		ret = (*op[x])(piles, 1);
+		ret = (*op[x])(piles, 0, piles->fd);
 		str++;
 	}
 }
@@ -70,7 +70,7 @@ char	**read_instructions(t_piles *piles)
 	content = 0;
 	while (ret > 0)
 	{
-		ret = get_next_line(0, &line);
+		ret = get_next_line(piles->fd, &line);
 		if (ret < 0)
 			print_errors(piles);
 		tmp = content;
@@ -96,6 +96,7 @@ int		main(int ac, char **av)
 		return (1);
 	piles = init_piles();
 	parsing(ac, av, piles);
+	piles->fd = 0;
 	instructions = read_instructions(piles);
 	execute_instructions(piles, instructions);
 	if (ascending_order(piles->a))

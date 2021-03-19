@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 22:15:55 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/19 17:10:32 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/19 22:10:46 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	move_up2(t_piles *piles, int count)
 	count2 = count;
 	while (count > 0)
 	{
-		rotate_b(piles, 1);
+		rotate_b(piles, 1, piles->fd);
 		count--;
 	}
-	push_b(piles, 1);
+	push_b(piles, 1, piles->fd);
 }
 
 void	move_down2(t_piles *piles, int count)
@@ -32,10 +32,10 @@ void	move_down2(t_piles *piles, int count)
 	count2 = count;
 	while (count > 0)
 	{
-		reverse_rotate_b(piles, 1);
+		reverse_rotate_b(piles, 1, piles->fd);
 		count--;
 	}
-	push_b(piles, 1);
+	push_b(piles, 1, piles->fd);
 }
 
 void	move_up3(t_piles *piles, int count)
@@ -45,7 +45,7 @@ void	move_up3(t_piles *piles, int count)
 	count2 = count;
 	while (count > 0)
 	{
-		rotate_b(piles, 1);
+		rotate_b(piles, 1, piles->fd);
 		count--;
 	}
 }
@@ -57,7 +57,7 @@ void	move_down3(t_piles *piles, int count)
 	count2 = count;
 	while (count > 0)
 	{
-		reverse_rotate_b(piles, 1);
+		reverse_rotate_b(piles, 1, piles->fd);
 		count--;
 	}
 }
@@ -69,7 +69,7 @@ void	move_up4(t_piles *piles, int count)
 	count2 = count;
 	while (count > 0)
 	{
-		rotate_a(piles, 1);
+		rotate_a(piles, 1, piles->fd);
 		count--;
 	}
 }
@@ -81,7 +81,7 @@ void	move_down4(t_piles *piles, int count)
 	count2 = count;
 	while (count > 0)
 	{
-		reverse_rotate_a(piles, 1);
+		reverse_rotate_a(piles, 1, piles->fd);
 		count--;
 	}
 }
@@ -209,7 +209,7 @@ void reverse_range_pile(t_piles *piles, long max)
 void	put_min_last(t_piles *piles)
 {
 	if (*(long *)piles->a->content == piles->min)
-		rotate_a(piles, 1);
+		rotate_a(piles, 1, piles->fd);
 }
 
 void	put_min_first(t_piles *piles)
@@ -287,19 +287,19 @@ void	heap_sort_magic(t_piles *piles)
 				piles->prev_min = nb; 
 			else if (nb == piles->max)
 				piles->prev_min = piles->max;
-			rotate_a(piles, 1);
+			rotate_a(piles, 1, piles->fd);
 		}
 		else if (nb > piles->prev_min)
 		{
 			piles->prev_min = nb;
-			rotate_a(piles, 1);
+			rotate_a(piles, 1, piles->fd);
 		}
 		else if (!check)
 		{
 			min = nb;
 			max = nb;
 			check = 1;
-			push_b(piles, 1);
+			push_b(piles, 1, piles->fd);
 		}
 		else
 		{
@@ -335,10 +335,10 @@ void	heap_sort_magic(t_piles *piles)
 		last = find_last(piles->a);
 		while((*(long *)piles->b->content < last))
 		{
-			reverse_rotate_a(piles, 1);
+			reverse_rotate_a(piles, 1, piles->fd);
 			last = find_last(piles->a);
 		}
-		push_a(piles, 1);
+		push_a(piles, 1, piles->fd);
 	}
 	put_min_first(piles);
 }
