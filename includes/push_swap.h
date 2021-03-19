@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 14:34:04 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/18 22:46:10 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/19 21:37:48 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ typedef struct		s_list
 	void		*content;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct		s_elem
+{
+	long	pos;
+	long	moves;
+	int		dir;
+}					t_elem;
 
 typedef struct		s_piles
 {
@@ -102,7 +109,12 @@ void				bubble_sort(t_piles *piles);
 void				heap_sort(t_piles *piles);
 void				heap_sort_magic(t_piles *piles);
 void				three_sort(t_piles *piles);
-void       			thib_sort(t_piles *piles);
+
+
+void				thib_sort(t_piles *piles);
+void				set_steps(t_piles *piles);
+void				find_position(t_list *pile, long *pos_min, long *pos_max);
+void				count_moves(t_elem *min, t_elem *max, int len);
 
 int					ascending_order(t_list *pile_a);
 int					descending_order(t_list *pile_a);
@@ -117,6 +129,8 @@ int					print_sticks(t_piles *piles);
 
 
 void				free_piles(t_piles *piles);
+
+int					check_options(int i, char *av, t_piles *piles);
 
 void				parsing(int ac, char **av, t_piles *piles);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   descending.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndemont <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/09 11:30:31 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/09 16:42:35 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/19 15:09:51 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		check_descending_order(t_list *pile_a)
 	while (list->next)
 	{
 		if (*(long *)list->content < *(long *)list->next->content)
-			return  (0);
+			return (0);
 		list = list->next;
 	}
 	return (1);

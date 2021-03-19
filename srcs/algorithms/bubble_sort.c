@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heapsort.c                                         :+:      :+:    :+:   */
+/*   bubblesort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 22:15:55 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/12 14:07:07 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/19 17:06:46 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,15 @@
 
 void	bubble_sort(t_piles *piles)
 {
-	long		min;
-	long		max;
 	int			count1;
 	int			count2;
 	t_list		*list;
 
-	(void)min;
-	(void)max;
 	count1 = 1;
 	while (count1 < piles->len_total)
 	{
 		if (ascending_order(piles->a))
-				return ;
+			return ;
 		list = piles->a;
 		count2 = 1;
 		while (count2 < piles->len_total)
@@ -39,7 +35,7 @@ void	bubble_sort(t_piles *piles)
 			list = piles->a;
 			count2++;
 		}
-		rotate_a(piles, 1); 
+		rotate_a(piles, 1);
 		count1++;
 	}
 }
