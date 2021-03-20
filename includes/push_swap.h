@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 14:34:04 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/19 22:36:52 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/20 12:36:02 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <sys/uio.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <fcntl.h>
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
 # define BLACK "\033[0;30m"
@@ -135,7 +136,7 @@ int					print_sticks(t_piles *piles);
 void				free_piles(t_piles *piles);
 
 int					check_options(int i, char *av, t_piles *piles);
-
+int					check_options2(char **av, int ac, t_piles *piles);
 void				parsing(int ac, char **av, t_piles *piles);
 
 #endif

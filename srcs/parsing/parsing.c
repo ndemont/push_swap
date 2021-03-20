@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 15:00:17 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/19 22:31:59 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/20 12:59:07 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,14 +89,11 @@ void		parsing(int ac, char **av, t_piles *piles)
 {
 	long	i;
 
-	i = 1;
+	i = check_options2(av, ac, piles);
+	if (!i)
+		print_errors(piles);
 	while (i < ac)
 	{
-		if (check_options(i, av[i], piles))
-		{
-			i++;
-			continue ;
-		}
 		set_value(piles, av[i]);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 12:31:31 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/19 22:16:56 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/20 13:16:47 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,12 @@ int		main(int ac, char **av)
 	t_piles	*piles;
 	char	**instructions;
 
+	piles = NULL;
 	if (ac == 1)
 		return (1);
 	piles = init_piles();
-	parsing(ac, av, piles);
 	piles->fd = 0;
+	parsing(ac, av, piles);
 	instructions = read_instructions(piles);
 	execute_instructions(piles, instructions);
 	if (ascending_order(piles->a))

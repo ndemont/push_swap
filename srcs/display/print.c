@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:53:48 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/19 21:23:20 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/20 13:00:51 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@ int	print_piles(t_piles *piles)
 		return (0);
 	if (!piles->v)
 		return (0);
-//print_sticks(piles);
-	if (piles->c)
+	if (piles->s)
+		print_sticks(piles);
+	else if (piles->c)
 		print_colors_piles(piles);
 	else
 		print_nocolors_piles(piles);
