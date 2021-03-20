@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 12:31:56 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/19 22:06:48 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/20 17:13:50 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ int		rotate_a(t_piles *piles, int print, int fd)
 		return (print_piles(piles));
 	pile_first = piles->a;
 	copy = malloc(sizeof(long*));
-	*copy = *(long *)pile_first->content;
 	if (!copy)
-		print_errors(piles);
+		print_errors(piles, 0);
+	*copy = *(long *)pile_first->content;
 	new = ft_lstnew(copy);
 	pile_second = pile_first->next;
 	if (!pile_second)
@@ -116,7 +116,7 @@ int		reverse_rotate_a(t_piles *piles, int print, int fd)
 	pile_last = ft_lstlast(piles->a);
 	copy = malloc(sizeof(long*));
 	if (!copy)
-		print_errors(piles);
+		print_errors(piles, 0);
 	*copy = *(long *)pile_last->content;
 	pile_new = ft_lstnew(copy);
 	ft_lstadd_front(&piles->a, pile_new);

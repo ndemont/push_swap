@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 21:27:40 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/19 21:36:56 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/20 17:12:09 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void		set_steps(t_piles *piles)
 		piles->steps++;
 	piles->mediane = malloc(sizeof(long) * piles->steps);
 	if (!piles->mediane)
-		print_errors(piles);
+		print_errors(piles, 0);
 	piles->mediane[piles->steps - 1] = piles->max;
 	min = piles->min;
 	i = 0;
