@@ -1,9 +1,17 @@
 NAME				= push_swap
 LIBFT				= libft.a
 CHECK				= checker
-CLEAR				= \033[2K\c
 CC					= clang
 RM					= rm -rf
+
+WHITE				= \033[0;37m
+GREEN				= \033[0;92m
+YELLOW				= \033[0;93m
+BLUE				= \033[0;94m
+CYAN 				= \033[0;96m
+PURPLE				= \033[0;95m
+RED 				= \033[0;91m
+CLEAR				= \033[2K
 
 CFLAGS				= -Wall -Wextra -Werror
 IFLAGS				= -I${INC_DIR} -I${LIBFT_DIR}/includes
@@ -23,25 +31,32 @@ all: 				init ${NAME}
 
 init:
 					$(shell mkdir -p ${OBJS_DIR})
-					${MAKE} --silent -C ${LIBFT_DIR}
+					@${MAKE} --silent -C ${LIBFT_DIR}
 
 ${NAME}:			${OBJS}
-					${CC} ${CFLAGS} ${IFLAGS} push_swap.c -o $@ $^ ${LFLAGS}
-					${CC} ${CFLAGS} ${IFLAGS} checker.c -o ${CHECK} $^ ${LFLAGS}
+					@printf "🔧 compiling...\t\t${PURPLE}objects${WHITE}\n"
+					@${CC} ${CFLAGS} ${IFLAGS} push_swap.c -o $@ $^ ${LFLAGS}
+					@${CC} ${CFLAGS} ${IFLAGS} checker.c -o ${CHECK} $^ ${LFLAGS}
+					@printf "🔢 compiling...\t\t${GREEN}${NAME}${WHITE}\n"
+					@printf "🔍 compiling...\t\t${GREEN}${CHECK}${WHITE}\n"
+
 
 ${OBJS_DIR}/%.o:	%.c
-					@echo "${CLEAR}"
-					@echo "compiling $<\r\c"
+					@printf "🔧 compiling...\t\t${PURPLE}$<${WHITE}"
 					@${CC} ${CFLAGS} ${IFLAGS} -c $< -o $@
+					@printf "\r${CLEAR}"
 	
 clean:
-					${RM} ${OBJS_DIR}
-					${MAKE} clean --silent -C ${LIBFT_DIR}
+					@printf "🧽 cleaning... \t\t${YELLOW}${NAME}${WHITE}\n"
+					@${RM} ${OBJS_DIR}
+					@${MAKE} clean --silent -C ${LIBFT_DIR}
 
-fclean:
-					${RM} ${NAME}
-					${RM} ${CHECK}
-					${MAKE} fclean --silent -C ${LIBFT_DIR}
+fclean:				clean
+					@printf "🧼 deep cleaning... \t${CYAN}${NAME}${WHITE}\n"
+					@printf "🧼 deep cleaning... \t${CYAN}${CHECK}${WHITE}\n"
+					@${RM} ${NAME}
+					@${RM} ${CHECK}
+					@${MAKE} fclean --silent -C ${LIBFT_DIR}
 
 re:					fclean all
 
