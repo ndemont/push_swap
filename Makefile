@@ -10,7 +10,7 @@ YELLOW				= \033[0;93m
 BLUE				= \033[0;94m
 CYAN 				= \033[0;96m
 PURPLE				= \033[0;95m
-RED 				= \033[0;31m
+RED 				= \033[0;91m
 CLEAR				= \033[2K
 
 CFLAGS				= -Wall -Wextra -Werror
@@ -34,26 +34,26 @@ init:
 					@${MAKE} --silent -C ${LIBFT_DIR}
 
 ${NAME}:			${OBJS}
-					@printf "🔧 compiling...\t\t${PURPLE}objects${WHITE}\n"
+					@printf "🔧 compiling...\t\t${YELLOW}objects${WHITE}\n"
 					@${CC} ${CFLAGS} ${IFLAGS} push_swap.c -o $@ $^ ${LFLAGS}
 					@${CC} ${CFLAGS} ${IFLAGS} checker.c -o ${CHECK} $^ ${LFLAGS}
-					@printf "🔢 compiling...\t\t${RED}${NAME}${WHITE}\n"
-					@printf "🔍 compiling...\t\t${RED}${CHECK}${WHITE}\n"
+					@printf "🔢 creating...\t\t${GREEN}${NAME}${WHITE}\n"
+					@printf "🔍 creating...\t\t${GREEN}${CHECK}${WHITE}\n"
 
 
 ${OBJS_DIR}/%.o:	%.c
-					@printf "🔧 compiling...\t\t${PURPLE}$<${WHITE}"
+					@printf "🔧 compiling...\t\t${YELLOW}$<${WHITE}"
 					@${CC} ${CFLAGS} ${IFLAGS} -c $< -o $@
 					@printf "\r${CLEAR}"
 	
 clean:
-					@printf "🧽 cleaning... \t\t${YELLOW}${NAME}${WHITE}\n"
+					@printf "🧽 cleaning... \t\t${RED}${NAME}${WHITE}\n"
 					@${RM} ${OBJS_DIR}
 					@${MAKE} clean --silent -C ${LIBFT_DIR}
 
 fclean:				clean
-					@printf "🧼 deep cleaning... \t${CYAN}${NAME}${WHITE}\n"
-					@printf "🧼 deep cleaning... \t${CYAN}${CHECK}${WHITE}\n"
+					@printf "🧼 deep cleaning... \t${RED}${NAME}${WHITE}\n"
+					@printf "🧼 deep cleaning... \t${RED}${CHECK}${WHITE}\n"
 					@${RM} ${NAME}
 					@${RM} ${CHECK}
 					@${MAKE} fclean --silent -C ${LIBFT_DIR}

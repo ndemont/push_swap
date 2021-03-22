@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 14:34:04 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/22 00:41:03 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/22 20:45:05 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int					check_duplicate(t_piles *piles, long n2);
 long				*check_errors(char *av, t_piles *piles);
 void				print_errors(t_piles *piles, char *error);
 
-t_piles 			*init_piles(void);
+t_piles				*init_piles(void);
 
 void				ft_lstremove_last(t_list *lst, void (*del)(void *));
 
@@ -91,7 +91,6 @@ void				median_sort(t_piles *piles);
 void				three_sort(t_piles *piles);
 void				five_sort(t_piles *piles);
 
-
 void				thib_sort(t_piles *piles);
 void				set_steps(t_piles *piles);
 void				find_position(t_list *pile, long *pos_min, long *pos_max);
@@ -104,10 +103,8 @@ int					check_empty(t_list *list);
 void				put_min_first(t_piles *piles);
 
 int					print_piles(t_piles *piles);
-int					print_colors_piles(t_piles *piles);
-int					print_nocolors_piles(t_piles *piles);
+int					print_numbers(t_piles *piles);
 int					print_sticks(t_piles *piles);
-
 
 void				free_piles(t_piles *piles);
 

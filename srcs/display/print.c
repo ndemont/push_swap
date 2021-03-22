@@ -6,28 +6,45 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:53:48 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/21 20:48:43 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/22 20:42:58 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	print_piles(t_piles *piles)
+void	print_numbers_a(t_piles *piles, t_list *pile_a)
 {
-	if (!piles)
-		return (0);
-	if (!piles->v)
-		return (0);
-	if (piles->s)
-		print_sticks(piles);
-	else if (piles->c)
-		print_colors_piles(piles);
+	if (pile_a)
+	{
+		if (piles->c)
+		{
+			printf(CYAN);
+			printf("%11ld", *(long *)pile_a->content);
+			printf(RESET);
+		}
+		else
+			printf("%11ld", *(long *)pile_a->content);
+	}
 	else
-		print_nocolors_piles(piles);
-	return (1);
+		printf("%11c", ' ');
 }
 
-int	print_nocolors_piles(t_piles *piles)
+void	print_numbers_b(t_piles *piles, t_list *pile_b)
+{
+	if (pile_b)
+	{
+		if (piles->c)
+		{
+			printf(PURPLE);
+			printf("%ld", *(long *)pile_b->content);
+			printf(RESET);
+		}
+		else
+			printf("%ld", *(long *)pile_b->content);
+	}
+}
+
+int		print_numbers(t_piles *piles)
 {
 	t_list	*pile_a;
 	t_list	*pile_b;
@@ -42,22 +59,29 @@ int	print_nocolors_piles(t_piles *piles)
 		pile_b = piles->b;
 		while (pile_a || pile_b)
 		{
+			print_numbers_a(piles, pile_a);
 			if (pile_a)
-			{
-				printf("%11ld", *(long *)pile_a->content);
 				pile_a = pile_a->next;
-			}
-			else
-				printf("%11c", ' ');
 			printf(" | ");
+			print_numbers_b(piles, pile_b);
 			if (pile_b)
-			{
-				printf("%ld", *(long *)pile_b->content);
 				pile_b = pile_b->next;
-			}
 			printf("\n");
 		}
 	}
-	usleep(1000000);
+	usleep(100000);
+	return (1);
+}
+
+int		print_piles(t_piles *piles)
+{
+	if (!piles)
+		return (0);
+	if (!piles->v)
+		return (0);
+	if (piles->s)
+		print_sticks(piles);
+	else
+		print_numbers(piles);
 	return (1);
 }

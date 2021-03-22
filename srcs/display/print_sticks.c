@@ -6,18 +6,66 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:53:48 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/18 23:01:04 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/22 20:43:31 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	print_sticks(t_piles *piles)
+static void	print_sticks_a(t_piles *piles, t_list *pile_a, int i)
+{
+	long	nb;
+
+	if (pile_a)
+	{
+		nb = *(long *)pile_a->content;
+		while (nb > 0)
+		{
+			if (piles->c)
+			{
+				printf(CYAN);
+				printf("-");
+				printf(RESET);
+			}
+			else
+				printf("-");
+			i--;
+			nb--;
+		}
+	}
+	while (i > 0)
+	{
+		printf(" ");
+		i--;
+	}
+}
+
+static void	print_sticks_b(t_piles *piles, t_list *pile_b)
+{
+	long	nb;
+
+	if (pile_b)
+	{
+		nb = *(long *)pile_b->content;
+		while (nb > 0)
+		{
+			if (piles->c)
+			{
+				printf(PURPLE);
+				printf("-");
+				printf(RESET);
+			}
+			else
+				printf("-");
+			nb--;
+		}
+	}
+}
+
+int			print_sticks(t_piles *piles)
 {
 	t_list	*pile_a;
 	t_list	*pile_b;
-	int		i;
-	long	nb;
 
 	if (piles)
 	{
@@ -29,47 +77,14 @@ int	print_sticks(t_piles *piles)
 		pile_b = piles->b;
 		while (pile_a || pile_b)
 		{
-			printf(CYAN);
-			i = piles->max;
+			print_sticks_a(piles, pile_a, piles->max);
 			if (pile_a)
-			{
-				i = piles->max;
-				nb = *(long *)pile_a->content;
-				while (nb > 0)
-				{
-					printf("-");
-					i--;
-					nb--;
-				}
 				pile_a = pile_a->next;
-			}
-			while (i > 0)
-			{
-				printf(" ");
-				i--;
-			}
-			i = piles->max;
-			printf(WHITE);
 			printf(" | ");
-			printf(PURPLE);
+			print_sticks_b(piles, pile_b);
 			if (pile_b)
-			{
-				nb = *(long *)pile_b->content;
-				while (nb > 0)
-				{
-					printf("-");
-					i--;
-					nb--;
-				}
 				pile_b = pile_b->next;
-			}
-			while (i > 0)
-			{
-				printf(" ");
-				i--;
-			}
 			printf("\n");
-			printf(WHITE);
 		}
 	}
 	usleep(100000);
