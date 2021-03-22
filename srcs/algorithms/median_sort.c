@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 22:15:55 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/20 12:54:47 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/21 22:55:06 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,14 @@ void	replace_pile_a(t_piles *piles, int i, int *remaining)
 	}
 }
 
-void	thib_sort(t_piles *piles)
+void	median_sort(t_piles *piles)
 {
 	int count;
 	int remaining;
 	int i;
 
+	if (ascending_order(piles->a))
+		return ;
 	i = 0;
 	count = piles->len_total;
 	set_steps(piles);

@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:53:48 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/18 22:47:45 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/21 20:49:09 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ int	print_colors_piles(t_piles *piles)
 			printf(WHITE);
 		}
 	}
-	usleep(10000);
+	usleep(1000000);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 15:44:35 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/19 22:11:45 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/21 22:51:42 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	three_sort(t_piles *piles)
 	long	n2;
 	long	n3;
 
+	if (ascending_order(piles->a))
+		return ;
 	n1 = *(long *)piles->a->content;
 	n2 = *(long *)piles->a->next->content;
 	n3 = *(long *)piles->a->next->next->content;

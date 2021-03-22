@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 12:31:31 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/20 18:02:31 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/22 00:43:44 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,36 @@ char	**read_instructions(t_piles *piles)
 	return (list);
 }
 
+int		print_result(t_piles *piles)
+{
+
+	if (ascending_order(piles->a))
+	{
+		if (check_empty(piles->b))
+		{
+			if (piles->c)
+				printf("%sOK%s\n", GREEN, RESET);
+			else
+				printf("OK\n");
+		}
+		else
+		{
+			if (piles->c)
+				printf("%sKO%s\n", RED, RESET);
+			else
+				printf("KO\n");
+		}	
+	}
+	else
+	{
+		if (piles->c)
+			printf("%sKO%s\n", RED, RESET);
+		else
+			printf("KO\n");
+	}
+	return (1);
+}
+
 int		main(int ac, char **av)
 {
 	t_piles	*piles;
@@ -100,22 +130,7 @@ int		main(int ac, char **av)
 	parsing(ac, av, piles);
 	instructions = read_instructions(piles);
 	execute_instructions(piles, instructions);
-	if (ascending_order(piles->a))
-	{
-		printf(GREEN);
-		if (check_empty(piles->b))
-			printf("OK\n");
-		else
-		{
-			printf(RED);
-			printf("KO\n");
-		}	
-	}
-	else
-	{
-		printf(RED);
-		printf("KO\n");
-	}
+	print_result(piles);
 	free_piles(piles);
 	return (0);
 }

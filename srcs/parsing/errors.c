@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 15:02:30 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/20 17:20:18 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/20 20:27:20 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,10 @@ long	*check_errors(char *av, t_piles *piles)
 
 	if (!check_digit(av))
 		print_errors(piles, "arguments must be digital numbers");
-	if (ft_strlen(av) > 11)
-		print_errors(piles, "argument must be integers");
 	nb = (long *)malloc(sizeof(long));
 	if (!nb)
 		print_errors(piles, 0);
-	*nb = ft_atoi(av);
+	*nb = ft_atol(av);
 	if (!check_integer(*nb))
 		print_errors(piles, "argument must be integers");
 	if (check_duplicate(piles, *nb))

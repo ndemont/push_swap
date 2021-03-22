@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 14:34:04 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/20 18:00:20 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/22 00:41:03 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define PURPLE "\033[0;35m"
 # define CYAN "\033[0;36m"
 # define WHITE "\033[0;37m"
+# define RESET "\033[0;0m"
 # define CLEAR "\e[H\e[2J"
 
 typedef struct		s_elem
@@ -85,9 +86,10 @@ int					reverse_rotate_b(t_piles *piles, int print, int fd);
 int					reverse_rotate_both(t_piles *piles, int print, int fd);
 
 void				bubble_sort(t_piles *piles);
-void				heap_sort(t_piles *piles);
-void				heap_sort_magic(t_piles *piles);
+void				insertion_sort(t_piles *piles);
+void				median_sort(t_piles *piles);
 void				three_sort(t_piles *piles);
+void				five_sort(t_piles *piles);
 
 
 void				thib_sort(t_piles *piles);

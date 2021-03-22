@@ -10,7 +10,7 @@ YELLOW				= \033[0;93m
 BLUE				= \033[0;94m
 CYAN 				= \033[0;96m
 PURPLE				= \033[0;95m
-RED 				= \033[0;91m
+RED 				= \033[0;31m
 CLEAR				= \033[2K
 
 CFLAGS				= -Wall -Wextra -Werror
@@ -37,8 +37,8 @@ ${NAME}:			${OBJS}
 					@printf "🔧 compiling...\t\t${PURPLE}objects${WHITE}\n"
 					@${CC} ${CFLAGS} ${IFLAGS} push_swap.c -o $@ $^ ${LFLAGS}
 					@${CC} ${CFLAGS} ${IFLAGS} checker.c -o ${CHECK} $^ ${LFLAGS}
-					@printf "🔢 compiling...\t\t${GREEN}${NAME}${WHITE}\n"
-					@printf "🔍 compiling...\t\t${GREEN}${CHECK}${WHITE}\n"
+					@printf "🔢 compiling...\t\t${RED}${NAME}${WHITE}\n"
+					@printf "🔍 compiling...\t\t${RED}${CHECK}${WHITE}\n"
 
 
 ${OBJS_DIR}/%.o:	%.c
