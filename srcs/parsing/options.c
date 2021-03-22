@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 16:35:48 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/21 20:47:37 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/22 12:08:33 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int		check_dst(char **av, t_piles *piles, int i)
 {
-	if ((!ft_strcmp(av[i], "-dst")) && (!piles->dst) && (!piles->src))
+	if ((!ft_strcmp(av[i], "--dst")) && (!piles->dst) && (!piles->src))
 	{
-		piles->fd = open(av[i + 1], O_CREAT | O_WRONLY | O_TRUNC);
+		piles->fd = open(av[i + 1], O_CREAT | O_TRUNC | O_RDWR, 0644);
 		if (piles->fd < 0)
 			print_errors(piles, 0);
 		piles->dst = 1;
@@ -27,7 +27,7 @@ int		check_dst(char **av, t_piles *piles, int i)
 
 int		check_src(char **av, t_piles *piles, int i)
 {
-	if ((!ft_strcmp(av[i], "-src")) && (!piles->src) && (!piles->dst))
+	if ((!ft_strcmp(av[i], "--src")) && (!piles->src) && (!piles->dst))
 	{
 		piles->fd = open(av[i + 1], O_RDONLY);
 		if (piles->fd < 0)

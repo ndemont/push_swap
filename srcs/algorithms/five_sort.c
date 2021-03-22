@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 15:44:35 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/21 23:48:09 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/22 11:56:55 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 long	find_pos_max(t_list *list, long max)
 {
 	t_list	*temp;
-	long 	count;
+	long	count;
 
 	temp = list;
 	count = 0;
@@ -29,7 +29,7 @@ long	find_pos_max(t_list *list, long max)
 	return (-1);
 }
 
-void	move_up4(t_piles *piles, int count)
+void	move_up(t_piles *piles, int count)
 {
 	int	count2;
 
@@ -41,7 +41,7 @@ void	move_up4(t_piles *piles, int count)
 	}
 }
 
-void	move_down4(t_piles *piles, int count)
+void	move_down(t_piles *piles, int count)
 {
 	int count2;
 
@@ -73,23 +73,10 @@ void	put_min_first(t_piles *piles)
 		count = pos;
 	}
 	if (direction)
-		move_up4(piles, count);
+		move_up(piles, count);
 	else
-		move_down4(piles, count);
+		move_down(piles, count);
 }
-
-//static int	check_max(t_piles *piles)
-//{
-//	long	n_b1;
-
-//	n_b1 = *(long *)piles->b->content;
-//	if (n_b1 == piles->max)
-//	{
-//		push_a(piles, 1, piles->fd);
-//		rotate_a(piles, 1, piles->fd);
-//	}
-//	return (0);
-//}
 
 void	five_sort(t_piles *piles)
 {
@@ -104,8 +91,6 @@ void	five_sort(t_piles *piles)
 	if (piles->len_total == 5)
 		push_b(piles, 1, piles->fd);
 	three_sort(piles);
-	//check_max(piles);
-	//while (piles->len_b)
 	last = *(long *)piles->a->next->next->content;
 	while (piles->len_b)
 	{
@@ -114,7 +99,7 @@ void	five_sort(t_piles *piles)
 		{
 			n_b2 = *(long *)piles->b->next->content;
 			if (n_b2 < *(long *)piles->a->content)
-			{	
+			{
 				swap_b(piles, 1, piles->fd);
 				push_a(piles, 1, piles->fd);
 			}
