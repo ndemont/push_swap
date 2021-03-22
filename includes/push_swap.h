@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 14:34:04 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/22 20:45:05 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/22 20:56:12 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,18 @@ typedef struct		s_piles
 	int				s;
 }					t_piles;
 
+t_piles				*init_piles(void);
+
+void				parsing(int ac, char **av, t_piles *piles);
+int					check_options(char **av, int ac, t_piles *piles);
 int					check_digit(char *str);
 int					check_integer(long nb);
 int					check_duplicate(t_piles *piles, long n2);
 long				*check_errors(char *av, t_piles *piles);
 void				print_errors(t_piles *piles, char *error);
 
-t_piles				*init_piles(void);
-
 void				ft_lstremove_last(t_list *lst, void (*del)(void *));
+void				put_min_first(t_piles *piles);
 
 void				push_swap(t_piles *piles, int print);
 int					swap_a(t_piles *piles, int print, int fd);
@@ -86,12 +89,10 @@ int					reverse_rotate_b(t_piles *piles, int print, int fd);
 int					reverse_rotate_both(t_piles *piles, int print, int fd);
 
 void				bubble_sort(t_piles *piles);
-void				insertion_sort(t_piles *piles);
-void				median_sort(t_piles *piles);
+void				quick_sort(t_piles *piles);
 void				three_sort(t_piles *piles);
 void				five_sort(t_piles *piles);
 
-void				thib_sort(t_piles *piles);
 void				set_steps(t_piles *piles);
 void				find_position(t_list *pile, long *pos_min, long *pos_max);
 void				count_moves(t_elem *min, t_elem *max, int len);
@@ -100,15 +101,10 @@ int					ascending_order(t_list *pile_a);
 int					descending_order(t_list *pile_a);
 int					check_empty(t_list *list);
 
-void				put_min_first(t_piles *piles);
-
 int					print_piles(t_piles *piles);
 int					print_numbers(t_piles *piles);
 int					print_sticks(t_piles *piles);
 
 void				free_piles(t_piles *piles);
-
-int					check_options(char **av, int ac, t_piles *piles);
-void				parsing(int ac, char **av, t_piles *piles);
 
 #endif

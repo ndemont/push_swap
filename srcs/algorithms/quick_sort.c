@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   median_sort.c                                      :+:      :+:    :+:   */
+/*   quick_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/06 22:15:55 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/21 22:55:06 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/22 20:53:35 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	replace_pile_a(t_piles *piles, int i, int *remaining)
 	}
 }
 
-void	median_sort(t_piles *piles)
+void	quick_sort(t_piles *piles)
 {
 	int count;
 	int remaining;

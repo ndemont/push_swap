@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:02:21 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/21 20:26:07 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/22 20:53:18 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		main(int ac, char **av)
 		else if (piles->len_total <= 5)
 			five_sort(piles);
 		else
-			median_sort(piles);
+			quick_sort(piles);
 	}
 	free_piles(piles);
 	return (0);
