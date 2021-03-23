@@ -7,7 +7,7 @@ the lowest possible number of actions. To succeed you’ll have to manipulate va
 types of algorithms and choose the one (of many) most appropriate solution for an
 optimized data sorting.
 
-## actions
+## instructions
 
 **sa**: swap a - swap the first 2 elements at the top of stack a. Do nothing if there
 is only one or no elements).
@@ -49,8 +49,8 @@ becomes the first one.
 
 ## allowed functions:
 
-◦ write
-◦ read
-◦ malloc
-◦ free
-◦ exit
+- `write`
+- `read`
+- `malloc`
+- `free`
+- `exit`
