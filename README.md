@@ -16,9 +16,7 @@ Receive a list of integer arguments ad a pile and sorts the list. It will genera
 
 - **checker [-cvs] [--src] [file ...] [arguments ...]**
 
-Thanks to the checker program, you will be able to check if the
-list of instructions you’ll generate with the program push_swap is
-actually sorting the stack properly.
+Checks if the list of instructions you’ll generate with the program push_swap is actually sorting the stack properly.
 
 ## instructions
 
