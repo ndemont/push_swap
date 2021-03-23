@@ -11,7 +11,7 @@ optimized data sorting.
 
 - **push_swap [-cvs] [-src] [file ...] [arguments ...]**
 
-Receive a list of integer arguments ad a pile and sorts the list. It will generates instructions used  to sort the pile.
+Receives a list of integer arguments as a pile and generates the instructions used to sort that pile.
 
 
 - **checker [-cvs] [--src] [file ...] [arguments ...]**
@@ -52,11 +52,11 @@ becomes the first one.
 
 ## bonus
 
-- [ ] -v
-- [ ] -c
-- [ ] -s
-- [ ] --dst
-- [ ] --src
+- -v
+- -c
+- -s
+- --dst
+- --src
 
 ## allowed functions:
 
