@@ -52,11 +52,11 @@ becomes the first one.
 
 ## bonus
 
-- `-v`
-- `-c`
-- `-s`
-- `--dst`
-- `--src`
+- `-v` visual - displays the piles at each state. (can only be used with --dst for push_swap)
+- `-c` color - displays in colors.
+- `-s` sticks - displays the piles with sticks. (can only be used with `-v`)
+- `--dst file` destination - saves the instructions in the precised file. (option for push_swap)
+- `--src file` source - reads the instructions from the precised file. (option for checker) 
 
 ## allowed functions
 
