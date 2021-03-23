@@ -7,6 +7,18 @@ the lowest possible number of actions. To succeed you’ll have to manipulate va
 types of algorithms and choose the one (of many) most appropriate solution for an
 optimized data sorting.
 
+## binary
+
+- **push_swap [-cvs] [-src] [file path]**
+
+Receive a list of integer arguments ad a pile and sorts the list. It will generates instructions used  to sort the pile.
+
+- **checker [-cvs] [--src] [file path]**
+
+Thanks to the checker program, you will be able to check if the
+list of instructions you’ll generate with the program push_swap is
+actually sorting the stack properly.
+
 ## instructions
 
 **sa**: swap a - swap the first 2 elements at the top of stack a. Do nothing if there
