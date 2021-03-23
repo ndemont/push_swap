@@ -52,11 +52,11 @@ becomes the first one.
 
 ## bonus
 
-- -v
-- -c
-- -s
-- --dst
-- --src
+- `-v`
+- `-c`
+- `-s`
+- `--dst`
+- `--src`
 
 ## allowed functions:
 
