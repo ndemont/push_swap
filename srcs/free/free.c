@@ -18,6 +18,8 @@ void	free_piles(t_piles *piles)
 	{
 		ft_lstclear(&piles->a, &free);
 		ft_lstclear(&piles->b, &free);
+		if (piles->mediane)
+			free(piles->mediane);
 		free(piles);
 	}
 }

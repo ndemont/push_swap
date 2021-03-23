@@ -74,6 +74,11 @@ static void	set_value(t_piles *piles, char *av)
 	while (split && split[i])
 	{
 		nb = check_errors(split[i], piles);
+		if (!nb)
+		{
+			free_split(split);
+			print_errors(piles, "Wrong arguments");
+		}
 		set_min_max(piles, *nb);
 		if (!add_elem(piles, nb))
 		{

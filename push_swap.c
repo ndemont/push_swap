@@ -16,6 +16,7 @@ int		main(int ac, char **av)
 {
 	t_piles *piles;
 
+	(void)av;
 	if (ac == 1)
 		return (1);
 	piles = init_piles();

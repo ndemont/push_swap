@@ -19,12 +19,12 @@ t_piles		*init_piles(void)
 	piles = (t_piles*)malloc(sizeof(t_piles));
 	if (!piles)
 		print_errors(piles, 0);
-	piles->a = (t_list*)malloc(sizeof(t_list));
-	if (!piles->a)
-		print_errors(piles, 0);
-	piles->b = (t_list*)malloc(sizeof(t_list));
-	if (!piles->b)
-		print_errors(piles, 0);
+//	piles->a = (t_list*)malloc(sizeof(t_list));
+//	if (!piles->a)
+//		print_errors(piles, 0);
+	//piles->b = (t_list*)malloc(sizeof(t_list));
+//	if (!piles->b)
+	//	print_errors(piles, 0);
 	piles->a = 0;
 	piles->b = 0;
 	piles->v = 0;
@@ -38,5 +38,6 @@ t_piles		*init_piles(void)
 	piles->max = 0;
 	piles->src = 0;
 	piles->dst = 0;
+	piles->mediane = 0;
 	return (piles);
 }

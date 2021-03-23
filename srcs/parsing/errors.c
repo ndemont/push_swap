@@ -62,15 +62,21 @@ long	*check_errors(char *av, t_piles *piles)
 	long	*nb;
 
 	if (!check_digit(av))
-		print_errors(piles, "arguments must be digital numbers");
+		return (0);
 	nb = (long *)malloc(sizeof(long));
 	if (!nb)
-		print_errors(piles, 0);
+		return (0);	
 	*nb = ft_atol(av);
 	if (!check_integer(*nb))
-		print_errors(piles, "argument must be integers");
+	{
+		free(nb);
+		return (0);
+	}
 	if (check_duplicate(piles, *nb))
-		print_errors(piles, "argument must not be duplicated");
+	{
+		free(nb);
+		return (0);
+	}
 	return (nb);
 }
 
