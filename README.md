@@ -9,7 +9,7 @@ optimized data sorting.
 
 ## binary
 
-- `push_swap [-cvs] [-src] [file ...] [arguments ...]`
+- `push_swap [-cvs] [--dst] [file ...] [arguments ...]`
 
 Receives a list of integer arguments as a pile and generates the instructions used to sort that pile.
 
