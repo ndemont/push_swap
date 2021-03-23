@@ -58,7 +58,7 @@ becomes the first one.
 - `--dst`
 - `--src`
 
-## allowed functions:
+## allowed functions
 
 - `write`
 - `read`
