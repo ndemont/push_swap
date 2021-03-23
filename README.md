@@ -9,12 +9,12 @@ optimized data sorting.
 
 ## binary
 
-- **push_swap [-cvs] [-src] [file path]**
+- **push_swap [-cvs] [-src] [file PATH]**
 
 Receive a list of integer arguments ad a pile and sorts the list. It will generates instructions used  to sort the pile.
 
 
-- **checker [-cvs] [--src] [file path]**
+- **checker [-cvs] [--src] [file PATH]**
 
 Thanks to the checker program, you will be able to check if the
 list of instructions you’ll generate with the program push_swap is
