@@ -52,6 +52,8 @@ becomes the first one.
 
 ## bonus
 
+**command**
+- `ruby -e "puts (a..b).to_a.shuffle.join(' ')"` - generates a set of integers between a and b in a random order
 **flags**
 - `-v` visual - displays the piles at each state. (can only be used with --dst for push_swap)
 - `-c` color - displays in colors.
@@ -60,7 +62,7 @@ becomes the first one.
 - `--src file` source - reads the instructions from the precised file. (option for checker) 
 
 **tester**
-- `tester.sh` - tests the number of operations and displays an error according tho the limits of your choice.
+- `tester.sh` - tests the number of operations and displays an error according to the limits of your choice.
 
 ## allowed functions
 
