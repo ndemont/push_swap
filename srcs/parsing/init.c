@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:24:11 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/20 17:05:52 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/23 21:21:57 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,6 @@ t_piles		*init_piles(void)
 	piles = (t_piles*)malloc(sizeof(t_piles));
 	if (!piles)
 		print_errors(piles, 0);
-//	piles->a = (t_list*)malloc(sizeof(t_list));
-//	if (!piles->a)
-//		print_errors(piles, 0);
-	//piles->b = (t_list*)malloc(sizeof(t_list));
-//	if (!piles->b)
-	//	print_errors(piles, 0);
 	piles->a = 0;
 	piles->b = 0;
 	piles->v = 0;
