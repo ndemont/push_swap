@@ -54,6 +54,7 @@ becomes the first one.
 
 **command**
 - `ruby -e "puts (a..b).to_a.shuffle.join(' ')"` - generates a set of integers between a and b in a random order
+
 **flags**
 - `-v` visual - displays the piles at each state. (can only be used with --dst for push_swap)
 - `-c` color - displays in colors.
