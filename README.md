@@ -58,6 +58,8 @@ becomes the first one.
 - `--dst file` destination - saves the instructions in the precised file. (option for push_swap)
 - `--src file` source - reads the instructions from the precised file. (option for checker) 
 
+- `tester.sh` - tests the number of operations and displays an error according tho the limits of your choice.
+- 
 ## allowed functions
 
 - `write`
