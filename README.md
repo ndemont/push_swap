@@ -52,14 +52,16 @@ becomes the first one.
 
 ## bonus
 
+**flags**
 - `-v` visual - displays the piles at each state. (can only be used with --dst for push_swap)
 - `-c` color - displays in colors.
 - `-s` sticks - displays the piles with sticks. (can only be used with `-v`)
 - `--dst file` destination - saves the instructions in the precised file. (option for push_swap)
 - `--src file` source - reads the instructions from the precised file. (option for checker) 
 
+**tester**
 - `tester.sh` - tests the number of operations and displays an error according tho the limits of your choice.
-- 
+
 ## allowed functions
 
 - `write`
