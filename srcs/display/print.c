@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:53:48 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/24 11:33:05 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/24 19:46:16 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int		print_numbers(t_piles *piles)
 	if (piles)
 	{
 		printf(CLEAR);
-		printf("%11c", 'A');
-		printf("%4c", 'B');
+		printf("%11s", "PILE A");
+		printf("%9s", "PILE B");
 		printf("\n%9c--------\n", '-');
 		pile_a = piles->a;
 		pile_b = piles->b;
@@ -81,7 +81,7 @@ int		print_piles(t_piles *piles)
 		return (0);
 	if (piles->s)
 	{
-		if (piles->min > 0 && piles->max < 60)
+		if (piles->min >= 0)
 			print_sticks(piles);
 		else
 			print_numbers(piles);

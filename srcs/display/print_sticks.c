@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:53:48 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/24 14:44:16 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/24 17:13:19 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static void	print_sticks_a(t_piles *piles, t_list *pile_a, int i)
 	if (pile_a)
 	{
 		nb = *(long *)pile_a->content;
+		if (piles->max / 51 > 0)
+			nb = nb / (piles->max / 51);
 		while (nb > 0)
 		{
 			if (piles->c)
@@ -47,6 +49,8 @@ static void	print_sticks_b(t_piles *piles, t_list *pile_b)
 	if (pile_b)
 	{
 		nb = *(long *)pile_b->content;
+		if (piles->max / 51 > 0)
+			nb = nb / (piles->max / 51);
 		while (nb > 0)
 		{
 			if (piles->c)
@@ -80,7 +84,7 @@ int			print_sticks(t_piles *piles)
 			print_sticks_a(piles, pile_a, piles->max);
 			if (pile_a)
 				pile_a = pile_a->next;
-			printf(" | ");
+			printf("  ");
 			print_sticks_b(piles, pile_b);
 			if (pile_b)
 				pile_b = pile_b->next;
