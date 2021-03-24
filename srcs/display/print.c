@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:53:48 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/22 20:42:58 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/24 11:33:05 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,12 @@ int		print_piles(t_piles *piles)
 	if (!piles->v)
 		return (0);
 	if (piles->s)
-		print_sticks(piles);
+	{
+		if (piles->min > 0 && piles->max < 60)
+			print_sticks(piles);
+		else
+			print_numbers(piles);
+	}
 	else
 		print_numbers(piles);
 	return (1);

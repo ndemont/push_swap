@@ -37,10 +37,10 @@ for nb_arg in {1..500}
 		LIMIT=12
 	elif [[ $nb_arg -le 100 ]]
 	then
-		LIMIT=700
+		LIMIT=900
 	elif [[ $nb_arg -le 500 ]]
 	then
-		LIMIT=5500
+		LIMIT=7000
 	fi
 	ARG=`ruby -e "puts (1..$nb_arg).to_a.shuffle.join(' ')"`
 	
