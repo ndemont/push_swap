@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 12:31:31 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/22 00:43:44 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/27 15:20:37 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void		execute_instructions(t_piles *piles, char **instructions)
 	{
 		x = get_instruction(*str);
 		if (x < 0)
-			print_errors(piles, "wrong instructions\n");
+			print_errors(piles, "wrong instructions");
 		ret = (*op[x])(piles, 0, piles->fd);
 		str++;
 	}
