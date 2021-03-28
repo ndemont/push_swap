@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/04 11:53:48 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/24 17:13:19 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/27 21:19:39 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,11 @@ static void	print_sticks_a(t_piles *piles, t_list *pile_a, int i)
 		while (nb > 0)
 		{
 			if (piles->c)
-			{
 				printf("\e[46m");
-				printf(" ");
-				printf(RESET);
-			}
 			else
-				printf(" ");
+				printf("\e[47m");
+			printf(" ");
+			printf(RESET);
 			i--;
 			nb--;
 		}
@@ -54,13 +52,11 @@ static void	print_sticks_b(t_piles *piles, t_list *pile_b)
 		while (nb > 0)
 		{
 			if (piles->c)
-			{
 				printf("\e[45m");
-				printf(" ");
-				printf(RESET);
-			}
 			else
-				printf(" ");
+				printf("\e[47m");
+			printf(" ");
+			printf(RESET);
 			nb--;
 		}
 	}
@@ -91,6 +87,6 @@ int			print_sticks(t_piles *piles)
 			printf("\n");
 		}
 	}
-	usleep(100000);
+	usleep(10000);
 	return (1);
 }

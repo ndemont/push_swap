@@ -6,7 +6,7 @@
 /*   By: ndemont <ndemont@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/07 12:31:31 by ndemont           #+#    #+#             */
-/*   Updated: 2021/03/27 15:20:37 by ndemont          ###   ########.fr       */
+/*   Updated: 2021/03/28 01:23:20 by ndemont          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,8 @@ int		main(int ac, char **av)
 	piles = init_piles();
 	piles->fd = 0;
 	parsing(ac, av, piles);
+	if (piles->dst)
+		print_errors(piles, "--dst can not be used with push_swap");
 	instructions = read_instructions(piles);
 	execute_instructions(piles, instructions);
 	print_result(piles);
