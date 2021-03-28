@@ -3,29 +3,6 @@
 FILENAME="/tmp/push_swap_tester.sh"
 a=0
 
-# ABANDON
-#MODE=$1
-#
-#if [[ $MODE == '' ]]
-#then
-#	printf "usage:./tester.sh [all | 1 | 2 | 3]"
-#	exit
-#elif [[ $MODE == "all" ]]
-#then
-#	printf "all"
-#elif [[ $MODE == "1" ]]
-#then
-#	printf "1"
-#
-#elif [[ $MODE == "2" ]]
-#then
-#	printf "2"
-#	
-#elif [[ $MODE == "3" ]]
-#then
-#	printf "3"
-#fi
-
 for nb_arg in {1..500}
 	do
 	
